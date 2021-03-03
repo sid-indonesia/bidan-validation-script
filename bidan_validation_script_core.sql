@@ -22,6 +22,20 @@ SELECT
 		ELSE 0
 	END) $$ LANGUAGE SQL;
 
+CREATE OR REPLACE
+FUNCTION core.get_obs_element_value_by_form_submission_field(TEXT,
+core.core_event_json,
+TEXT) RETURNS TEXT AS $$
+SELECT
+	sub_json.obs_data -> $1 ->> 0
+FROM
+	(
+	SELECT
+		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
+WHERE
+	sub_json.obs_data ->> 'formSubmissionField' = $3
+LIMIT 1 $$ LANGUAGE SQL;
+
 SELECT
 	c."json" ->> 'firstName' AS candidate_name,
 	(CASE
@@ -719,24 +733,27 @@ SELECT
 		LIMIT 1) ILIKE '30' THEN 1
 		ELSE 0
 	END) AS "3-jumlah_fe_is_30",
-	(CASE
-		WHEN (
-		SELECT
-			sub_json.obs_data -> 'humanReadableValues' ->> 0
-		FROM
-			(
-			SELECT
-				jsonb_array_elements(e_kunjungan_anc_ke_1."json" #> '{obs}') AS obs_data ) sub_json
-		WHERE
-			sub_json.obs_data ->> 'formSubmissionField' = 'komplikasidalamKehamilan'
-		LIMIT 1) ILIKE '%tidak_ada_komplikasi%' THEN 1
-		ELSE 0
-	END) AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi",
 	core.check_obs_element_value('humanReadableValues',
 	e_kunjungan_anc_ke_1,
 	'komplikasidalamKehamilan',
-	'%tidak_ada_komplikasi%') AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi_func",
- c."json" ->> 'dateCreated' AS date_created
+	'%tidak_ada_komplikasi%') AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi",
+	CASE
+		WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_anc_ke_1,
+		'resikoTerdeksiPertamaKali')) IS NULL THEN 1
+		ELSE 0
+	END AS "3-resiko_terdeteksi_pertama_kali_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_ke_1,
+	'treatment',
+	'%Tidak%') AS "3-penanganan_diberikan_is_tidak",
+	CASE
+		WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_anc_ke_1,
+		'lokasiPeriksaOther')) IS NULL THEN 1
+		ELSE 0
+	END AS "3-merujuk_fasilitas_lain_is_tidak",
+	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
 LEFT JOIN (
@@ -771,11 +788,23 @@ LEFT JOIN (
 		sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
 		AND sub_json.obs_data -> 'values' ->> 0 = '1') e_kunjungan_anc_ke_1 ON
 	c."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_1."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
+	c."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
 WHERE
-	c."json" ->> 'dateCreated' BETWEEN '2021-02-27T00:00:00+08:00' AND '2021-02-28T23:59:59+08:00'
+	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
+	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
+	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
 	AND c."json" ->> 'firstName' <> '-'
 	AND c."json" ->> 'lastName' <> '-'
-	-- client_anak having firstName
-	-- and lastName as '-'
-	-- total 184 rows
-	-- TODO refactor use user-defined function `check_obs_element_value` instead duplicating them
+ORDER BY
+	1;
+-- client_anak having firstName
+-- and lastName as '-'
+-- total client is 104 in East Lombok by above criteria
+-- TODO refactor use user-defined function `check_obs_element_value` instead duplicating them
