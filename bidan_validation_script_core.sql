@@ -753,6 +753,38 @@ SELECT
 		'lokasiPeriksaOther')) IS NULL THEN 1
 		ELSE 0
 	END AS "3-merujuk_fasilitas_lain_is_tidak",
+	core.check_obs_element_value('values',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumPeriksaHbHasil',
+	'10') AS "3-hb_in_gr_per_dl_is_10",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumPeriksaHbAnemia',
+	'%positif%') AS "3-anemia_is_positif",
+	core.check_obs_element_value('values',
+	e_kunjungan_anc_lab_test,
+	'treatmentAnemiaTxt',
+	'%Pemberian%suplemen%zat%besi%') AS "3-penanganan_yang_diberikan_is_pemberian_suplemen_zat_besi",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumProteinUria',
+	'%Tidak%') AS "3-proteinuria_is_tidak",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumGulaDarah',
+	'<_140_mg_dl') AS "3-gula_darah_in_mg_per_dl_is_below_140",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumThalasemia',
+	'%negatif%') AS "3-thalasemia_is_negative",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumSifilis',
+	'%negatif%') AS "3-sifilis_is_negative",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_lab_test,
+	'laboratoriumHbsAg',
+	'%negatif%') AS "3-hbs_ag_is_negative",
 	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
@@ -796,6 +828,22 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
 	c."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		DISTINCT sub_json."json"
+	FROM
+		(
+		SELECT
+			e."json",
+			jsonb_array_elements(e."json" #> '{obs}') AS obs_data
+		FROM
+			"event" e
+		WHERE
+			e."json" ->> 'eventType' = 'Kunjungan ANC') sub_json
+	WHERE
+		sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
+		AND sub_json.obs_data -> 'values' ->> 0 = '3') e_kunjungan_anc_ke_3 ON
+	c."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_3."json" ->> 'baseEntityId'
 WHERE
 	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
@@ -807,4 +855,6 @@ ORDER BY
 -- client_anak having firstName
 -- and lastName as '-'
 -- total client is 104 in East Lombok by above criteria
--- TODO refactor use user-defined function `check_obs_element_value` instead duplicating them
+-- TODO refactor use user-defined function `check_obs_element_value`
+-- or `get_obs_element_value_by_form_submission_field` instead of duplicating them
+-- TODO joins are duplicative, need more specific criteria of each event
