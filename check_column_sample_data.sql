@@ -1,15 +1,15 @@
 SELECT
-	ta.riwayatkomplikasikebidanan
+	DISTINCT ta.riwayatkomplikasikebidanan
 FROM
 	sid3.tambah_anc ta;
 
 SELECT
-	ka.lokasiperiksaother
+	DISTINCT ka.pelayanancatatdibukukia
 FROM
 	sid3.kunjungan_anc ka;
 
 SELECT
-	kalt.laboratoriumguladarah
+	DISTINCT kalt.laboratoriumguladarah
 FROM
 	sid3.kunjungan_anc_lab_test kalt;
 
@@ -18,8 +18,8 @@ SELECT
 FROM
 	core."event" e
 WHERE
-	e.json ->> 'obs' ILIKE '%thala%'
-	AND e.json ->> 'eventType' = 'Kunjungan ANC Lab Test';
+	e.json ->> 'obs' ILIKE '%56.2%'
+	AND e.json ->> 'eventType' = 'Kunjungan ANC';
 
 SELECT
 	c.json ->> 'firstName',
