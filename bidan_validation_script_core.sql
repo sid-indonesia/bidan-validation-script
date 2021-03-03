@@ -732,11 +732,11 @@ SELECT
 		LIMIT 1) ILIKE '%tidak_ada_komplikasi%' THEN 1
 		ELSE 0
 	END) AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi",
---	core.check_obs_element_value('humanReadableValues',
---	e_kunjungan_anc_ke_1,
---	'komplikasidalamKehamilan',
---	'%tidak_ada_komplikasi%') AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi_func",
-	c."json" ->> 'dateCreated' AS date_created
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_ke_1,
+	'komplikasidalamKehamilan',
+	'%tidak_ada_komplikasi%') AS "3-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi_func",
+ c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
 LEFT JOIN (
@@ -778,3 +778,4 @@ WHERE
 	-- client_anak having firstName
 	-- and lastName as '-'
 	-- total 184 rows
+	-- TODO refactor use user-defined function `check_obs_element_value` instead duplicating them
