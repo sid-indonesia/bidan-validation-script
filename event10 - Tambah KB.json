@@ -1,0 +1,146 @@
+{
+  "_id": "6f8c90fb-ed14-4fe9-9e51-19364eeeec2b",
+  "obs": [
+    {
+      "values": [
+        "2019-10-28"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalkunjungan",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-10-28"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalPeriksa",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "1994-03-04T00:00:00.000+0800"
+      ],
+      "fieldCode": "tanggalLahir",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "tanggalLahir",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "27"
+      ],
+      "fieldCode": "1532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "umur",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "120"
+      ],
+      "fieldCode": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tdSistolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "80"
+      ],
+      "fieldCode": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "tdDiastolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1"
+      ],
+      "fieldCode": "1053AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "paritas",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "11"
+      ],
+      "fieldCode": "21AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "alkihb",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "23.6"
+      ],
+      "fieldCode": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "alkilila",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163159AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160653AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "keteranganTentangPesertaKB",
+      "humanReadableValues": [
+        "KB_Baru_Pasca_Salin"
+      ]
+    },
+    {
+      "values": [
+        "5279AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "374AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "jenisKontrasepsi",
+      "humanReadableValues": [
+        "Suntik"
+      ]
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614499232945,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Tambah KB",
+  "entityType": "kartu_ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.404+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "175144d6-2f10-443d-b1d5-150551b7c504"
+}

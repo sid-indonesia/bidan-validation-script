@@ -1,0 +1,133 @@
+{
+  "_id": "25fe353a-2f48-467b-a95d-157c99cd4e93",
+  "obs": [
+    {
+      "values": [
+        "12fef200-209d-4104-aa32-9eac4593e418"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-9-13"
+      ],
+      "fieldCode": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "formSubmissionField": "htp",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-08-20"
+      ],
+      "fieldCode": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalKunjunganRencanaPersalinan",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "159372AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "1578AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "162993AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "rencanaPenolongPersalinan",
+      "humanReadableValues": [
+        "bidan"
+      ]
+    },
+    {
+      "values": [
+        "159372AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159757AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "tempatRencanaPersalinan",
+      "humanReadableValues": [
+        "pusat_kesehatan_masyarakat"
+      ]
+    },
+    {
+      "values": [
+        "5617AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "969AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "rencanaPendampingPersalinan",
+      "humanReadableValues": [
+        "suami"
+      ]
+    },
+    {
+      "values": [
+        "1614AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1617AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "transportasi",
+      "humanReadableValues": [
+        "sepeda_motor"
+      ]
+    },
+    {
+      "values": [
+        "1560AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163503AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "pendonor",
+      "humanReadableValues": [
+        "keluarga"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159473AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "kondisiRumah",
+      "humanReadableValues": [
+        "permanen"
+      ]
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614497907499,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "rencana persalinan",
+  "entityType": "ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.388+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "09c212f6-80f1-4b9f-97c0-b472dcfdd13f"
+}

@@ -1,0 +1,359 @@
+{
+  "_id": "dcf5f3d1-e5cc-4fad-a7ae-98a314fb2ef2",
+  "obs": [
+    {
+      "values": [
+        "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "45AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pptest",
+      "humanReadableValues": [
+        "Positive"
+      ]
+    },
+    {
+      "values": [
+        "1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "12fef200-209d-4104-aa32-9eac4593e418"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-02-05"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "referenceDate",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1"
+      ],
+      "fieldCode": "5624AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "gravida",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "0"
+      ],
+      "fieldCode": "1053AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "partus",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "0"
+      ],
+      "fieldCode": "1823AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "abortus",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "0"
+      ],
+      "fieldCode": "1825AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "hidup",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "121375AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "145439AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "penyakitKronis",
+      "humanReadableValues": [
+        "asma"
+      ]
+    },
+    {
+      "values": [
+        "Udang dan Amoxilin"
+      ],
+      "fieldCode": "160647AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "Alergi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2018-12-07"
+      ],
+      "fieldCode": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalHPHT",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-9-13"
+      ],
+      "fieldCode": "5596AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "htp",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "117"
+      ],
+      "fieldCode": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "usiaKlinis",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "3"
+      ],
+      "fieldCode": "160665AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "trimesterKe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-02-05"
+      ],
+      "fieldCode": "tanggalMemperolehBukuKia",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalMemperolehBukuKia",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "Ya"
+      ],
+      "fieldCode": "jamkesmas",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "select one",
+      "formSubmissionField": "jamkesmas",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "148"
+      ],
+      "fieldCode": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "tbCM",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "45"
+      ],
+      "fieldCode": "160696AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "bbKg",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "23.2"
+      ],
+      "fieldCode": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "hasilPemeriksaanLILA",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "yes"
+      ],
+      "fieldCode": "134725AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPregnancyProteinEnergyMalnutrition",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "162589AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskLabourTBRisk",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "163091AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "HighRiskPregnancyTooManyChildren",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "112791AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "HighRiskPregnancyAbortus",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "163155AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "HighRiskLabourSectionCesareaRecord",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "120237AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskEctopicPregnancy",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "119270AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskCardiovascularDiseaseRecord",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "6033AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskDidneyDisorder",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "156637AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskHeartDisorder",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "yes"
+      ],
+      "fieldCode": "121375AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskAsthma",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "1389AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskTuberculosis",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "160152AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskMalaria",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "163210AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskHIVAIDS",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "anc"
+      ],
+      "fieldCode": "type",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "type",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614497508938,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Tambah ANC",
+  "entityType": "kartu_ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.379+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "88ba89de-5f0c-45ac-acdc-974ad997d98b"
+}

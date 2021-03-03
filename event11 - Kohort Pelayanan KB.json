@@ -1,0 +1,73 @@
+{
+  "_id": "9cb9f793-5e66-4329-a1aa-dd4edf0bc1d3",
+  "obs": [
+    {
+      "values": [
+        "2019-11-28"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalkunjungan",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163158AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160653AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "keteranganTentangPesertaKB",
+      "humanReadableValues": [
+        "lama"
+      ]
+    },
+    {
+      "values": [
+        "5275AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "374AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "jenisKontrasepsi",
+      "humanReadableValues": [
+        "iud"
+      ]
+    },
+    {
+      "values": [
+        "efek_samping"
+      ],
+      "fieldCode": "159395AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "keterangantentangPesertaKB2",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "Perdarahan dan sering pusing"
+      ],
+      "fieldCode": "164153",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "keteranganEfekSamping",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614499310735,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Kohort Pelayanan KB",
+  "entityType": "kartu_ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.406+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "fa11f1d9-11d0-4cd3-8c4e-68fa1b96b8a5"
+}

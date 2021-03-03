@@ -1,0 +1,95 @@
+{
+  "_id": "eb5ce7ba-38ac-4541-8dfc-0993b92b0fa1",
+  "obs": [
+    {
+      "values": [
+        "Error: could not determine deviceID"
+      ],
+      "fieldCode": "deviceid",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "deviceid",
+      "formSubmissionField": "deviceid",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no simserial property in enketo"
+      ],
+      "fieldCode": "simserial",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "simserial",
+      "formSubmissionField": "simserial",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no phonenumber property in enketo"
+      ],
+      "fieldCode": "phonenumber",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "phonenumber",
+      "formSubmissionField": "phonenumber",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-09-15"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalPeriksa",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "2019-09-15"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalPendaftaran",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "uuid:c0597f31-b937-44bd-8861-afc62d318462"
+      ],
+      "fieldCode": "instanceID",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "instanceID",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614498890695,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Tambah Bayi",
+  "entityType": "kartu_ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.395+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "e2950c6e-71e1-42bb-b037-387a42b2922f"
+}

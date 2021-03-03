@@ -1,0 +1,408 @@
+{
+  "_id": "a38055f6-bd85-4944-89f9-58789d5ea4d1",
+  "obs": [
+    {
+      "values": [
+        "68944e81-389f-4172-8912-0f6ff117c1c9"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163512AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Polindes"
+      ]
+    },
+    {
+      "values": [
+        "Ya"
+      ],
+      "fieldCode": "nomorTelpon",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "select one",
+      "formSubmissionField": "nomorTelpon",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "087765056650"
+      ],
+      "fieldCode": "159635AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "nomorHp",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163510AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "KeteranganK1k4Who",
+      "humanReadableValues": [
+        "Ya"
+      ]
+    },
+    {
+      "values": [
+        "2019-01-25"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "ancDate",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "25"
+      ],
+      "fieldCode": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "usiaKlinis",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2"
+      ],
+      "fieldCode": "160665AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "trimesterKe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2"
+      ],
+      "fieldCode": "1590AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "kunjunganKe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2"
+      ],
+      "fieldCode": "1425AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "ancKe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159356AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "Jamkesmas",
+      "humanReadableValues": [
+        "jika_ya"
+      ]
+    },
+    {
+      "values": [
+        "160551AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160540AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "caraMasukTempatPelayanan",
+      "humanReadableValues": [
+        "atas_permintaan_sendiri"
+      ]
+    },
+    {
+      "values": [
+        "tidak ada keluhan"
+      ],
+      "fieldCode": "160531AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "anamnesisIbu",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "55"
+      ],
+      "fieldCode": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "bbKg",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "120"
+      ],
+      "fieldCode": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalTDSistolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "80"
+      ],
+      "fieldCode": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalTDDiastolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "23.2"
+      ],
+      "fieldCode": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "hasilPemeriksaanLILA",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "132645AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "115122AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "statusGiziibu",
+      "humanReadableValues": [
+        "kekurangan_energi_kronis"
+      ]
+    },
+    {
+      "values": [
+        "20"
+      ],
+      "fieldCode": "1439AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tfu",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "145"
+      ],
+      "fieldCode": "1440AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "djj",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163134AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "kepalaJaninTerhadapPAP",
+      "humanReadableValues": [
+        "belum_masuk"
+      ]
+    },
+    {
+      "values": [
+        "1240"
+      ],
+      "fieldCode": "163135AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "taksiranBeratJanin",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "160091AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160090AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "persentasiJanin",
+      "humanReadableValues": [
+        "kepala"
+      ]
+    },
+    {
+      "values": [
+        "159913AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159949AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "jumlahJanin",
+      "humanReadableValues": [
+        "tunggal"
+      ]
+    },
+    {
+      "values": [
+        "161538AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163522AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "statusImunisasitt",
+      "humanReadableValues": [
+        "tt_ke_2"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160701AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananInjeksitt",
+      "humanReadableValues": [
+        "jika_dilakukan"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163148AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananCatatDiBukuKia",
+      "humanReadableValues": [
+        "jika_dilakukan"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "104677AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananfe",
+      "humanReadableValues": [
+        "Ya"
+      ]
+    },
+    {
+      "values": [
+        "30"
+      ],
+      "fieldCode": "104677AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananFe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1576AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "komplikasidalamKehamilan",
+      "humanReadableValues": [
+        "tidak_ada_komplikasi"
+      ]
+    },
+    {
+      "values": [
+        "yes"
+      ],
+      "fieldCode": "157648AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPregnancyProteinEnergyMalnutrition",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "113859AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPregnancyPIH",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "111768AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRisklabourFetusNumber",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "140951AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskLabourFetusSize",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "115939AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskLabourFetusMalpresentation",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2"
+      ],
+      "fieldCode": "hiddenAncKe",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "hiddenAncKe",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1613980087583,
+  "duration": 0,
+  "eventDate": "2021-02-22T01:00:00.000+08:00",
+  "eventType": "Kunjungan ANC",
+  "entityType": "ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-22T15:48:12.755+08:00",
+  "identifiers": {},
+  "baseEntityId": "690d9447-ea44-4e0a-9f38-7ca0b7c19cfb",
+  "serverVersion": 1613980092755,
+  "formSubmissionId": "05a8db80-1410-460b-af75-52ab73de84c9"
+}

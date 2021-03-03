@@ -1,0 +1,332 @@
+{
+  "_id": "5e41ca37-954a-4e66-9c44-59644d1fbeab",
+  "obs": [
+    {
+      "values": [
+        "12fef200-209d-4104-aa32-9eac4593e418"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2018-12-07"
+      ],
+      "fieldCode": "1427AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "tanggalHPHT",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "160429AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160085AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "keadaanIbu",
+      "humanReadableValues": [
+        "hidup"
+      ]
+    },
+    {
+      "values": [
+        "151849AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159917AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "keadaanBayi",
+      "humanReadableValues": [
+        "hidup"
+      ]
+    },
+    {
+      "values": [
+        "163505AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "163506AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "163507AAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "163508AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163511AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "persalinan",
+      "humanReadableValues": [
+        "kalasatu",
+        "kaladua",
+        "kalatiga",
+        "kalaempat"
+      ]
+    },
+    {
+      "values": [
+        "2019-09-15"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalKalaIAktif",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "21:00"
+      ],
+      "fieldCode": "163509AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "time",
+      "formSubmissionField": "jamKalaIAktif",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-09-16"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalKalaII",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "01:00"
+      ],
+      "fieldCode": "163509AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "time",
+      "formSubmissionField": "jamKalaII",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-09-16"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalPlasentaLahir",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "01:15"
+      ],
+      "fieldCode": "163509AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "time",
+      "formSubmissionField": "jamPlasentaLahir",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "250"
+      ],
+      "fieldCode": "161928AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "perdarahanKalaIV2JamPostpartum",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "130348AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160090AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "persentasi",
+      "humanReadableValues": [
+        "belakang_kepala"
+      ]
+    },
+    {
+      "values": [
+        "159372AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1572AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "tempatBersalin",
+      "humanReadableValues": [
+        "pusat_kesehatan_masyarakat"
+      ]
+    },
+    {
+      "values": [
+        "1578AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1573AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "penolong",
+      "humanReadableValues": [
+        "bidan"
+      ]
+    },
+    {
+      "values": [
+        "1170AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "5630AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "caraPersalinanIbu",
+      "humanReadableValues": [
+        "normal"
+      ]
+    },
+    {
+      "values": [
+        "81369AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "164138",
+        "164139"
+      ],
+      "fieldCode": "163452",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "manajemenAktifKalaIII",
+      "humanReadableValues": [
+        "injeksi_oksittosin",
+        "peregangan_tali_pusat",
+        "masase_fundus_uteri"
+      ]
+    },
+    {
+      "values": [
+        "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1576AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select all that apply",
+      "formSubmissionField": "komplikasi",
+      "humanReadableValues": [
+        "tidak_ada_komplikasi"
+      ]
+    },
+    {
+      "values": [
+        "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163145AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "dirujukKe",
+      "humanReadableValues": [
+        "tidak_diujuk"
+      ]
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "141596AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumDistosia",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "47AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumPIH",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "230AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumHemorrhage",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "117069AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumInfection",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "130AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumMaternalSepsis",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "129251AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumPreEclampsiaEclampsia",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "118744AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumVacum",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "159260AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumForceps",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1774AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "treatment",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614498097752,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Dokumentasi Persalinan",
+  "entityType": "ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.389+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "0f344e0e-3015-4309-9c1e-7032d1c64523"
+}

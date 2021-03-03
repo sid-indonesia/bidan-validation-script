@@ -1,0 +1,165 @@
+{
+  "_id": "a287e38c-f169-4c7d-adee-f6e1cb7f58e7",
+  "obs": [
+    {
+      "values": [
+        "12fef200-209d-4104-aa32-9eac4593e418"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "159372AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "2019-02-05"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "referenceDate",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "10"
+      ],
+      "fieldCode": "1828AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "laboratoriumPeriksaHbHasil",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "164083AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumPeriksaHbAnemia",
+      "humanReadableValues": [
+        "positif"
+      ]
+    },
+    {
+      "values": [
+        "Pemberian suplemen zat besi"
+      ],
+      "fieldCode": "160632AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "parentCode": "164083AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldDataType": "text",
+      "formSubmissionField": "treatmentAnemiaTxt",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "128340AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumProteinUria",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    },
+    {
+      "values": [
+        "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159734AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumGulaDarah",
+      "humanReadableValues": [
+        "<_140_mg_dl"
+      ]
+    },
+    {
+      "values": [
+        "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "164084AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumThalasemia",
+      "humanReadableValues": [
+        "negatif"
+      ]
+    },
+    {
+      "values": [
+        "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1032AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumSifilis",
+      "humanReadableValues": [
+        "negatif"
+      ]
+    },
+    {
+      "values": [
+        "664AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159430AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "laboratoriumHbsAg",
+      "humanReadableValues": [
+        "negatif"
+      ]
+    },
+    {
+      "values": [
+        "yes"
+      ],
+      "fieldCode": "163397AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPregnancyAnemia",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "117807AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPregnancyDiabetes",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614497720862,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Kunjungan ANC Lab Test",
+  "entityType": "ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.384+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "8390cb7e-08f0-4373-a666-96da222e69a6"
+}

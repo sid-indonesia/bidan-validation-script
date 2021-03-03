@@ -1,0 +1,188 @@
+{
+  "_id": "1c3eb2c3-8afc-47a3-b4f6-638ce7d1d93c",
+  "obs": [
+    {
+      "values": [
+        "1537AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Puskesmas"
+      ]
+    },
+    {
+      "values": [
+        "160635AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160637AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pasienWilayah",
+      "humanReadableValues": [
+        "pasien_wilayah_desa"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "160563AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pasienPindahan",
+      "humanReadableValues": [
+        "No"
+      ]
+    },
+    {
+      "values": [
+        "Rarang"
+      ],
+      "fieldCode": "162724AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "puskesmas",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "27"
+      ],
+      "fieldCode": "1532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "umur",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163123AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1712AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pendidikan",
+      "humanReadableValues": [
+        "Sekolah_Menengah_Atas"
+      ]
+    },
+    {
+      "values": [
+        "162933AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "162929AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "agama",
+      "humanReadableValues": [
+        "Islam"
+      ]
+    },
+    {
+      "values": [
+        "159464AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pekerjaan",
+      "humanReadableValues": [
+        "Ibu_Rumah_Tangga"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "162956AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "gakinTidak",
+      "humanReadableValues": [
+        "Yes"
+      ]
+    },
+    {
+      "values": [
+        "Sayang"
+      ],
+      "fieldCode": "162724AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "posyandu",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163130AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "asuransiJiwa",
+      "humanReadableValues": [
+        "Asuransi_Kesehatan"
+      ]
+    },
+    {
+      "values": [
+        "163118AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "300AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "golonganDarah",
+      "humanReadableValues": [
+        "O"
+      ]
+    },
+    {
+      "values": [
+        "081945456262"
+      ],
+      "fieldCode": "159635AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "NomorTelponHp",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "0"
+      ],
+      "fieldCode": "374AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "jenisKontrasepsi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2021-02-22"
+      ],
+      "fieldCode": "registrationDate",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "registrationDate",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1613987044688,
+  "duration": 0,
+  "eventDate": "2021-02-22T01:00:00.000+08:00",
+  "eventType": "Identitas Ibu",
+  "entityType": "kartu_ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-22T17:44:25.081+08:00",
+  "identifiers": {},
+  "baseEntityId": "08ee3e47-0b13-4fab-9ec8-30665029946b",
+  "serverVersion": 1613987065081,
+  "formSubmissionId": "9b10b6fb-181b-43c9-aa90-688bb7206fcc"
+}

@@ -1,0 +1,39 @@
+{
+    "_id": "f8948dfa-bc3d-48b5-8cad-3b97b79a225d",
+    "_rev": "v12",
+    "type": "Client",
+    "gender": "female",
+    "lastName": "Joko Prayitno",
+    "addresses": [
+        {
+            "addressType": "usual_residence",
+            "addressFields": {
+                "gps": "-8.561743 116.420641 552.3467148261435 21.600000381469727",
+                "address3": "Dusun Sayang RT1 RW 2, Desa Rarang Batas"
+            }
+        }
+    ],
+    "birthdate": "1994-03-04T08:00:00.000+08:00",
+    "firstName": "Desi Rahmasari",
+    "attributes": {
+        "nik": "5239018761921302",
+        "NoIbu": "234431",
+        "anc_id": "12fef200-209d-4104-aa32-9eac4593e418",
+        "NamaDukun": "Sanah",
+        "NamaKader": "Ratna"
+    },
+    "dateCreated": "2021-02-28T15:29:48.633+08:00",
+    "identifiers": {
+        "OPENMRS_UUID": null
+    },
+    "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+    "relationships": {
+        "childId": [
+            "5dc5ef2e-2c65-4d51-ac41-c9c3e64fb127",
+            "6f470c96-0115-4d0e-82b0-2350bcd4219c"
+        ]
+    },
+    "serverVersion": 1614499486611,
+    "birthdateApprox": false,
+    "deathdateApprox": false
+}

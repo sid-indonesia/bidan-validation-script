@@ -1,0 +1,264 @@
+{
+  "_id": "32736764-a81d-4c7c-96f3-1ade5e236866",
+  "obs": [
+    {
+      "values": [
+        "12fef200-209d-4104-aa32-9eac4593e418"
+      ],
+      "fieldCode": "ancId",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "ancId",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "Rumah_Ibu"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2019-09-19"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "PNCDate",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1"
+      ],
+      "fieldCode": "159893AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "hariKeKF",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "Baik"
+      ],
+      "fieldCode": "159395AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "keadaanUmum",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "110"
+      ],
+      "fieldCode": "5085AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalTDSistolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "90"
+      ],
+      "fieldCode": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalTDDiastolik",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "36.9"
+      ],
+      "fieldCode": "5088AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "tandaVitalSuhu",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "78"
+      ],
+      "fieldCode": "5087AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalNadi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "20"
+      ],
+      "fieldCode": "5242AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "tandaVitalPernafasan",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "104677AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananfe",
+      "humanReadableValues": [
+        "Ya"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "164132AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "vitaminA2jamPP",
+      "humanReadableValues": [
+        "Ya"
+      ]
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "164155AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "vitaminA24jamPP",
+      "humanReadableValues": [
+        "Ya"
+      ]
+    },
+    {
+      "values": [
+        "159722AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159721AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lochia",
+      "humanReadableValues": [
+        "lochia_rubra"
+      ]
+    },
+    {
+      "values": [
+        "25"
+      ],
+      "fieldCode": "161928AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "bleeding",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "163148AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananCatatDiBukuKia",
+      "humanReadableValues": [
+        "jika_dilakukan"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1774AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "treatment",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1648AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "rujukan",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "116135AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumInfection",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "yes"
+      ],
+      "fieldCode": "159240AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumPIH",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "130AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumMaternalSepsis",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "230AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumHemorrhage",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "115914AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "highRiskPostPartumMastitis",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614498241646,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Kunjungan PNC",
+  "entityType": "ibu",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.392+08:00",
+  "identifiers": {},
+  "baseEntityId": "2f718be8-424e-400f-9ab7-af17b878ebf0",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "dd79d8b4-b9b8-4d62-8171-18992809a504"
+}
