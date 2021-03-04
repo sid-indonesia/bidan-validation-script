@@ -1214,6 +1214,7 @@ WHERE
 	AND c."json" ->> 'lastName' <> '-'
 ORDER BY
 	1;
+-- TODO join latest child
 -- client_anak having firstName
 -- and lastName as '-'
 -- total client is 104 in East Lombok by above criteria
