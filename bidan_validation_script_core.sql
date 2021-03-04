@@ -909,6 +909,42 @@ SELECT
 		'lokasiPeriksaOther')) IS NULL THEN 1
 		ELSE 0
 	END AS "4-merujuk_fasilitas_lain_is_tidak",
+	core.check_obs_element_value('values',
+	e_rencana_persalinan,
+	'tanggalKunjunganRencanaPersalinan',
+	'2019-08-20') AS "5-tanggal_kunjungan_is_2019-08-20",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'lokasiPeriksa',
+	'%Puskesmas%') AS "5-lokasi_periksa_is_puskesmas",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'rencanaPenolongPersalinan',
+	'bidan') AS "5-rencana_penolong_persalinan_is_bidan",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'tempatRencanaPersalinan',
+	'pusat_kesehatan_masyarakat') AS "5-tempat_rencana_persalinan_is_puskesmas",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'rencanaPendampingPersalinan',
+	'suami') AS "5-rencana_pendamping_persalinan_is_suami",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'transportasi',
+	'sepeda_motor') AS "5-transportasi_is_sepeda_motor",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'pendonor',
+	'keluarga') AS "5-pendonor_is_keluarga",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'kondisiRumah',
+	'permanen') AS "5-status_rumah_is_permanen",
+	core.check_obs_element_value('humanReadableValues',
+	e_rencana_persalinan,
+	'kondisiRumah',
+	'permanen') AS "5-status_rumah_is_permanen",
 	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
@@ -968,6 +1004,14 @@ LEFT JOIN (
 		sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
 		AND sub_json.obs_data -> 'values' ->> 0 = '3') e_kunjungan_anc_ke_3 ON
 	c."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_3."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'rencana persalinan') e_rencana_persalinan ON
+	c."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
 WHERE
 	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
