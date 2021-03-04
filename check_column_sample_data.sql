@@ -4,7 +4,7 @@ FROM
 	sid3.tambah_anc ta;
 
 SELECT
-	DISTINCT ka.pelayanancatatdibukukia
+	DISTINCT ka.resikoterdeksipertamakali 
 FROM
 	sid3.kunjungan_anc ka;
 

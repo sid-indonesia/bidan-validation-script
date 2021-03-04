@@ -1,9 +1,9 @@
 {
-  "_id": "a38055f6-bd85-4944-89f9-58789d5ea4d1",
+  "_id": "97d429b9-d24c-464e-b008-769d42cb5c73",
   "obs": [
     {
       "values": [
-        "68944e81-389f-4172-8912-0f6ff117c1c9"
+        "27b29ad4-e43f-4164-aa0b-ebd2747af6c3"
       ],
       "fieldCode": "ancId",
       "fieldType": "formsubmissionField",
@@ -14,14 +14,14 @@
     },
     {
       "values": [
-        "163512AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        "159372AAAAAAAAAAAAAAAAAAAAAAAAAA"
       ],
       "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
       "fieldDataType": "select one",
       "formSubmissionField": "lokasiPeriksa",
       "humanReadableValues": [
-        "Polindes"
+        "Puskesmas"
       ]
     },
     {
@@ -33,16 +33,6 @@
       "parentCode": "",
       "fieldDataType": "select one",
       "formSubmissionField": "nomorTelpon",
-      "humanReadableValues": []
-    },
-    {
-      "values": [
-        "087765056650"
-      ],
-      "fieldCode": "159635AAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "fieldType": "concept",
-      "fieldDataType": "text",
-      "formSubmissionField": "nomorHp",
       "humanReadableValues": []
     },
     {
@@ -59,7 +49,7 @@
     },
     {
       "values": [
-        "2019-01-25"
+        "2019-07-01"
       ],
       "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -69,7 +59,7 @@
     },
     {
       "values": [
-        "25"
+        "30"
       ],
       "fieldCode": "1438AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -79,7 +69,7 @@
     },
     {
       "values": [
-        "2"
+        "3"
       ],
       "fieldCode": "160665AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -89,7 +79,7 @@
     },
     {
       "values": [
-        "2"
+        "3"
       ],
       "fieldCode": "1590AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -99,7 +89,7 @@
     },
     {
       "values": [
-        "2"
+        "3"
       ],
       "fieldCode": "1425AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -143,7 +133,7 @@
     },
     {
       "values": [
-        "55"
+        "56.2"
       ],
       "fieldCode": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -163,7 +153,7 @@
     },
     {
       "values": [
-        "80"
+        "90"
       ],
       "fieldCode": "5086AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -173,7 +163,7 @@
     },
     {
       "values": [
-        "23.2"
+        "23.6"
       ],
       "fieldCode": "1343AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -183,19 +173,19 @@
     },
     {
       "values": [
-        "132645AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       ],
       "fieldCode": "115122AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
       "fieldDataType": "select one",
       "formSubmissionField": "statusGiziibu",
       "humanReadableValues": [
-        "kekurangan_energi_kronis"
+        "normal"
       ]
     },
     {
       "values": [
-        "20"
+        "28"
       ],
       "fieldCode": "1439AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -205,7 +195,19 @@
     },
     {
       "values": [
-        "145"
+        "703AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "602AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "refleksPatelaIbu",
+      "humanReadableValues": [
+        "ada"
+      ]
+    },
+    {
+      "values": [
+        "138"
       ],
       "fieldCode": "1440AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -227,7 +229,7 @@
     },
     {
       "values": [
-        "1240"
+        "2480"
       ],
       "fieldCode": "163135AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -261,26 +263,26 @@
     },
     {
       "values": [
-        "161538AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        "163491AAAAAAAAAAAAAAAAAAAAAAAAAA"
       ],
       "fieldCode": "163522AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
       "fieldDataType": "select one",
       "formSubmissionField": "statusImunisasitt",
       "humanReadableValues": [
-        "tt_ke_2"
+        "tt_ke_3"
       ]
     },
     {
       "values": [
-        "1065AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
       ],
       "fieldCode": "160701AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
       "fieldDataType": "select one",
       "formSubmissionField": "pelayananInjeksitt",
       "humanReadableValues": [
-        "jika_dilakukan"
+        "jika_tidak_dilakukan"
       ]
     },
     {
@@ -319,19 +321,18 @@
     },
     {
       "values": [
-        "1107AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        "fe3"
       ],
-      "fieldCode": "1576AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-      "fieldType": "concept",
-      "fieldDataType": "select all that apply",
-      "formSubmissionField": "komplikasidalamKehamilan",
-      "humanReadableValues": [
-        "tidak_ada_komplikasi"
-      ]
+      "fieldCode": "fe1Fe3",
+      "fieldType": "formsubmissionField",
+      "parentCode": "",
+      "fieldDataType": "select one",
+      "formSubmissionField": "fe1Fe3",
+      "humanReadableValues": []
     },
     {
       "values": [
-        "yes"
+        "no"
       ],
       "fieldCode": "157648AAAAAAAAAAAAAAAAAAAAAAAAAA",
       "fieldType": "concept",
@@ -381,7 +382,7 @@
     },
     {
       "values": [
-        "2"
+        "3"
       ],
       "fieldCode": "hiddenAncKe",
       "fieldType": "formsubmissionField",
@@ -393,16 +394,16 @@
   ],
   "_rev": "v1",
   "type": "Event",
-  "version": 1613980087583,
+  "version": 1614324387788,
   "duration": 0,
-  "eventDate": "2021-02-22T01:00:00.000+08:00",
+  "eventDate": "2021-02-26T01:00:00.000+08:00",
   "eventType": "Kunjungan ANC",
   "entityType": "ibu",
   "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
   "providerId": "demo",
-  "dateCreated": "2021-02-22T15:48:12.755+08:00",
+  "dateCreated": "2021-02-26T15:37:33.868+08:00",
   "identifiers": {},
-  "baseEntityId": "690d9447-ea44-4e0a-9f38-7ca0b7c19cfb",
-  "serverVersion": 1613980092755,
-  "formSubmissionId": "05a8db80-1410-460b-af75-52ab73de84c9"
+  "baseEntityId": "a867ca21-f47b-4aa4-ad9c-a12c981e443a",
+  "serverVersion": 1614325053860,
+  "formSubmissionId": "d0091059-4fc5-4531-94db-a7f37da6e81b"
 }

@@ -877,6 +877,38 @@ SELECT
 	e_kunjungan_anc_ke_3,
 	'pelayananCatatDiBukuKia',
 	'jika_dilakukan') AS "4-is_pelayanan_catat_di_buku_kia_done",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_ke_3,
+	'pelayananfe',
+	'%Ya%') AS "4-is_pelayanan_fe",
+	core.check_obs_element_value('values',
+	e_kunjungan_anc_ke_3,
+	'pelayananFe',
+	'30') AS "4-jumlah_fe_is_30",
+	core.check_obs_element_value('values',
+	e_kunjungan_anc_ke_3,
+	'fe1Fe3',
+	'fe3') AS "4-jenis_fe_is_fe3",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_ke_3,
+	'komplikasidalamKehamilan',
+	'tidak_ada_komplikasi') AS "4-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi",
+	CASE
+		WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_anc_ke_3,
+		'resikoTerdeksiPertamaKali')) IS NULL THEN 1
+		ELSE 0
+	END AS "4-resiko_terdeteksi_pertama_kali_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_anc_ke_3,
+	'treatment',
+	'%Tidak%') AS "4-penanganan_diberikan_is_tidak",
+	CASE
+		WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_anc_ke_3,
+		'lokasiPeriksaOther')) IS NULL THEN 1
+		ELSE 0
+	END AS "4-merujuk_fasilitas_lain_is_tidak",
 	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
