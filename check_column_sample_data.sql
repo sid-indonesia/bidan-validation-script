@@ -24,12 +24,24 @@ FROM
 	sid3.dokumentasi_persalinan dp;
 
 SELECT
+	DISTINCT kp.rujukan
+FROM
+	sid3.kunjungan_pnc kp;
+
+SELECT
 	*
 FROM
 	core."event" e
 WHERE
-	e.json ->> 'obs' ILIKE '%Rafatar%'
+	e.json ->> 'obs' ILIKE '%pembengkakan%'
 	AND e.json ->> 'eventType' = 'Child Registration' ;
+
+SELECT
+	*
+FROM
+	core."event" e
+WHERE
+	jsonb_pretty(e."json") ILIKE '%perineum%';
 
 SELECT
 	c.json ->> 'firstName',
@@ -44,3 +56,6 @@ WHERE
 	AND c."json" ->> 'lastName' <> '-'
 ORDER BY
 	1;
+
+CREATE INDEX event_json_eventtype_idx ON
+core."event"((json->>'eventType'));

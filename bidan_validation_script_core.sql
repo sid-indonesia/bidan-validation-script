@@ -49,8 +49,8 @@ FROM
 WHERE
 	sub_json.obs_data ->> 'formSubmissionField' = $3
 LIMIT 1 $$ LANGUAGE SQL;
---DECLARE persalinan TEXT;
- SELECT
+
+SELECT
 	c."json" ->> 'firstName' AS candidate_name,
 	(CASE
 		WHEN c."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'gps' IS NOT NULL THEN 1
@@ -1018,7 +1018,7 @@ LIMIT 1 $$ LANGUAGE SQL;
 		e_dokumentasi_persalinan,
 		'manajemenAktifKalaIII') ILIKE '%injeksi_oksittosin%peregangan_tali_pusat%masase_fundus_uteri%' THEN 1
 		ELSE 0
-	END AS "6-manajemenAktifKalaIII_are_injeksi_oksittosin_peregangan_tali_pusat_masase_fundus_uteri",
+	END AS "6-manajemenAktifKalaIII_are_injeksi_oksittosin_peregangan_tali_",
 	CASE
 		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
 		e_dokumentasi_persalinan,
@@ -1047,6 +1047,82 @@ LIMIT 1 $$ LANGUAGE SQL;
 	e_dokumentasi_persalinan,
 	'keadaanBayi',
 	'hidup') AS "6-keadaan_bayi_is_hidup",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'lokasiPeriksa',
+	'Rumah_Ibu') AS "7-lokasi_periksa_is_rumah_ibu",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'PNCDate',
+	'2019-09-19') AS "7-tanggal_kunjungan_is_2019-09-19",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'hariKeKF',
+	'1') AS "7-hari_ke/KF_is_1",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'keadaanUmum',
+	'baik') AS "7-keadaan_umum_ibu_is_baik",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'tandaVitalTDSistolik',
+	'110') AS "7-sistolik_is_110",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'tandaVitalTDDiastolik',
+	'90') AS "7-diastolik_is_90",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'tandaVitalSuhu',
+	'36.9') AS "7-suhu_in_celsius_is_36.9",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'tandaVitalNadi',
+	'78') AS "7-nadi_in_bpm_is_78",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'tandaVitalPernafasan',
+	'20') AS "7-pernafasan_per_minute_is_20",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'lochia',
+	'lochia_rubra') AS "7-lochia_is_rubra",
+	core.check_obs_element_value('values',
+	e_kunjungan_pnc,
+	'bleeding',
+	'25') AS "7-perdarahan_in_cc_is_25",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'pelayananCatatDiBukuKia',
+	'jika_dilakukan') AS "7-is_pelayanan_catat_di_buku_kia_done",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'vitaminA2jamPP',
+	'Ya') AS "7-vitamin_A_2_jam_PP_is_ya",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'vitaminA24jamPP',
+	'Ya') AS "7-vitamin_A_24_jam_PP_is_ya",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_pnc,
+		'integrasiProgram') IS NULL THEN 1
+		ELSE 0
+	END AS "7-integrasi_program_is_null",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kunjungan_pnc,
+		'komplikasi') IS NULL THEN 1
+		ELSE 0
+	END AS "7-komplikasi_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'treatment',
+	'%Tidak%') AS "7-penanganan_diberikan_is_tidak",
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_pnc,
+	'rujukan',
+	'Tidak') AS "7-rujukan_is_tidak",
 	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
@@ -1122,6 +1198,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Dokumentasi Persalinan') e_dokumentasi_persalinan ON
 	c."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Kunjungan PNC') e_kunjungan_pnc ON
+	c."json" ->> 'baseEntityId' = e_kunjungan_pnc."json" ->> 'baseEntityId'
 WHERE
 	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
