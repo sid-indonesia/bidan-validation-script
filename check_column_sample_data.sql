@@ -4,7 +4,7 @@ FROM
 	sid3.tambah_anc ta;
 
 SELECT
-	DISTINCT ka.resikoterdeksipertamakali 
+	DISTINCT ka.resikoterdeksipertamakali
 FROM
 	sid3.kunjungan_anc ka;
 
@@ -14,12 +14,22 @@ FROM
 	sid3.kunjungan_anc_lab_test kalt;
 
 SELECT
+	DISTINCT rp.rencanapenolongpersalinan
+FROM
+	sid3.rencana_persalinan rp;
+
+SELECT
+	DISTINCT dp.persalinan
+FROM
+	sid3.dokumentasi_persalinan dp;
+
+SELECT
 	*
 FROM
 	core."event" e
 WHERE
-	e.json ->> 'obs' ILIKE '%56.2%'
-	AND e.json ->> 'eventType' = 'Kunjungan ANC';
+	e.json ->> 'obs' ILIKE '%Rafatar%'
+	AND e.json ->> 'eventType' = 'Child Registration' ;
 
 SELECT
 	c.json ->> 'firstName',

@@ -36,7 +36,21 @@ WHERE
 	sub_json.obs_data ->> 'formSubmissionField' = $3
 LIMIT 1 $$ LANGUAGE SQL;
 
+CREATE OR REPLACE
+FUNCTION core.get_obs_element_value_by_form_submission_field_as_text(TEXT,
+core.core_event_json,
+TEXT) RETURNS TEXT AS $$
 SELECT
+	sub_json.obs_data ->> $1
+FROM
+	(
+	SELECT
+		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
+WHERE
+	sub_json.obs_data ->> 'formSubmissionField' = $3
+LIMIT 1 $$ LANGUAGE SQL;
+--DECLARE persalinan TEXT;
+ SELECT
 	c."json" ->> 'firstName' AS candidate_name,
 	(CASE
 		WHEN c."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'gps' IS NOT NULL THEN 1
@@ -945,6 +959,94 @@ SELECT
 	e_rencana_persalinan,
 	'kondisiRumah',
 	'permanen') AS "5-status_rumah_is_permanen",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'keadaanIbu',
+	'hidup') AS "6-keadaan_ibu_is_hidup",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field_as_text('humanReadableValues',
+		e_dokumentasi_persalinan,
+		'persalinan') ILIKE '%kalasatu%kaladua%kalatiga%kalaempat%' THEN 1
+		ELSE 0
+	END AS "6-persalinan_is_kalasatu_kaladua_kalatiga_kalaempat",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'tanggalKalaIAktif',
+	'2019-09-15') AS "6-tanggal_kala_satu_aktif_is_2019-09-15",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'jamKalaIAktif',
+	'21:00') AS "6-jam_kala_satu_aktif_is_21:00",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'tanggalKalaII',
+	'2019-09-16') AS "6-tanggal_kala_dua_is_2019-09-16",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'jamKalaII',
+	'01:00') AS "6-jam_kala_dua_is_01:00",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'persentasi',
+	'belakang_kepala') AS "6-presentasi_is_belakang_kepala",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'tanggalPlasentaLahir',
+	'2019-09-16') AS "6-tanggal_plasenta_lahir_is_2019-09-16",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'jamPlasentaLahir',
+	'01:15') AS "6-jam_plasenta_lahir_is_01:15",
+	core.check_obs_element_value('values',
+	e_dokumentasi_persalinan,
+	'perdarahanKalaIV2JamPostpartum',
+	'250') AS "6-perdarahan_kala_empat_2_jam_postpartum_in_cc_is_250",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'tempatBersalin',
+	'pusat_kesehatan_masyarakat') AS "6-tempat_bersalin_is_puskesmas",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'penolong',
+	'bidan') AS "6-penolong_is_bidan",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'caraPersalinanIbu',
+	'normal') AS "6-cara_persalinan_ibu_is_normal",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field_as_text('humanReadableValues',
+		e_dokumentasi_persalinan,
+		'manajemenAktifKalaIII') ILIKE '%injeksi_oksittosin%peregangan_tali_pusat%masase_fundus_uteri%' THEN 1
+		ELSE 0
+	END AS "6-manajemenAktifKalaIII_are_injeksi_oksittosin_peregangan_tali_pusat_masase_fundus_uteri",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_dokumentasi_persalinan,
+		'integrasiProgram') IS NULL THEN 1
+		ELSE 0
+	END AS "6-integrasi_program_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'komplikasi',
+	'tidak_ada_komplikasi') AS "6-komplikasi_is_tidak_ada_komplikasi",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'treatment',
+	'%Tidak%') AS "6-penanganan_diberikan_is_tidak",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'dirujukKe',
+	'tidak_diujuk') AS "6-dirujuk_ke_is_tidak_dirujuk",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_dokumentasi_persalinan,
+		'alamatBersalin') IS NULL THEN 1
+		ELSE 0
+	END AS "6-alamat_bersalin_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_dokumentasi_persalinan,
+	'keadaanBayi',
+	'hidup') AS "6-keadaan_bayi_is_hidup",
 	c."json" ->> 'dateCreated' AS date_created
 FROM
 	client c
@@ -1012,6 +1114,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'rencana persalinan') e_rencana_persalinan ON
 	c."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Dokumentasi Persalinan') e_dokumentasi_persalinan ON
+	c."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
 WHERE
 	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
