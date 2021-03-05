@@ -1193,7 +1193,7 @@ SELECT
 	e_kohort_kunjungan_bayi_perbulan,
 	'indikatorBeratBadanBayi',
 	'B') AS "9-indikator_berat_badan_bayi_is_B",
-	core.check_obs_element_value('humanReadableValues',
+	core.check_obs_element_value('values',
 	e_kohort_kunjungan_bayi_perbulan,
 	'AsiAksklusif',
 	'1') AS "9-ASI_eksklusif_is_1",
@@ -1235,6 +1235,58 @@ SELECT
 	e_imunisasi_bayi,
 	'polio1',
 	'2019-10-20') AS "10-imunisasi_polio1_is_2019-10-20",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'tanggalPeriksa',
+	'2019-10-28') AS "11-tanggal_periksa_is_2019-10-28",
+	core.check_obs_element_value('humanReadableValues',
+	e_tambah_kb,
+	'lokasiPeriksa',
+	'Puskesmas') AS "11-lokasi_periksa_is_Puskesmas",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'tanggalkunjungan',
+	'2019-10-28') AS "11-tanggal_kunjungan_is_2019-10-28",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'paritas',
+	'1') AS "11-paritas_is_1",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'tdSistolik',
+	'120') AS "11-td_sistolik_is_120",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'tdDiastolik',
+	'80') AS "11-td_diastolik_is_80",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'alkihb',
+	'11') AS "11-alki_hb_is_11",
+	core.check_obs_element_value('values',
+	e_tambah_kb,
+	'alkilila',
+	'23.6') AS "11-alki_lila_is_23.6",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_tambah_kb,
+		'alkiPenyakitKronis') IS NULL THEN 1
+		ELSE 0
+	END AS "11-alki_penyakit_kronis_is_null",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_tambah_kb,
+		'alkiPenyakitIms') IS NULL THEN 1
+		ELSE 0
+	END AS "11-alki_penyakit_ims_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_tambah_kb,
+	'keteranganTentangPesertaKB',
+	'KB_Baru_Pasca_Salin') AS "11-keterangan_tentang_kb_is_BO",
+	core.check_obs_element_value('humanReadableValues',
+	e_tambah_kb,
+	'jenisKontrasepsi',
+	'Suntik') AS "11-jenis_kontrasepsi_is_suntik",
 	ibu."json" ->> 'dateCreated' AS date_created
 FROM
 	client ibu
@@ -1361,6 +1413,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Imunisasi Bayi') e_imunisasi_bayi ON
 	anak."json" ->> 'baseEntityId' = e_imunisasi_bayi."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Tambah KB') e_tambah_kb ON
+	ibu."json" ->> 'baseEntityId' = e_tambah_kb."json" ->> 'baseEntityId'
 WHERE
 	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
@@ -1369,10 +1429,10 @@ WHERE
 	AND ibu."json" ->> 'lastName' <> '-'
 ORDER BY
 	1;
--- TODO join latest child
 -- client_anak having firstName
 -- and lastName as '-'
 -- total client is 104 in East Lombok by above criteria
 -- TODO refactor use user-defined function `check_obs_element_value`
 -- or `get_obs_element_value_by_form_submission_field` instead of duplicating them
 -- TODO joins are duplicative, need more specific criteria of each event
+-- or need cleaner data of each ibu (some ibu submit the same form with same details more than once)

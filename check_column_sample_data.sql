@@ -39,6 +39,11 @@ FROM
 	sid3.kohort_kunjungan_bayi_perbulan kkbp;
 
 SELECT
+	DISTINCT tk.jeniskontrasepsi
+FROM
+	sid3.tambah_kb tk;
+
+SELECT
 	*
 FROM
 	core."event" e
