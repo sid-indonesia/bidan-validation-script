@@ -1287,6 +1287,26 @@ SELECT
 	e_tambah_kb,
 	'jenisKontrasepsi',
 	'Suntik') AS "11-jenis_kontrasepsi_is_suntik",
+	core.check_obs_element_value('values',
+	e_kohort_pelayanan_kb,
+	'tanggalkunjungan',
+	'2019-11-28') AS "12-tanggal_kunjungan_is_2019-11-28",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_pelayanan_kb,
+	'keteranganTentangPesertaKB',
+	'lama') AS "12-keterangan_tentang_peserta_kb_is_lama",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_pelayanan_kb,
+	'jenisKontrasepsi',
+	'iud') AS "12-jenis_kontrasepsi_is_iud",
+	core.check_obs_element_value('values',
+	e_kohort_pelayanan_kb,
+	'keterangantentangPesertaKB2',
+	'efek_samping') AS "12-keterangan_tentang_peserta_kb2_is_efek_samping",
+	core.check_obs_element_value('values',
+	e_kohort_pelayanan_kb,
+	'keteranganEfekSamping',
+	'%Perdarahan%dan%sering%pusing%') AS "12-keterangan_efek_samping_is_perdarahan_dan_sering_pusing",
 	ibu."json" ->> 'dateCreated' AS date_created
 FROM
 	client ibu
@@ -1421,6 +1441,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Tambah KB') e_tambah_kb ON
 	ibu."json" ->> 'baseEntityId' = e_tambah_kb."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Kohort Pelayanan KB') e_kohort_pelayanan_kb ON
+	ibu."json" ->> 'baseEntityId' = e_kohort_pelayanan_kb."json" ->> 'baseEntityId'
 WHERE
 	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
@@ -1436,3 +1464,4 @@ ORDER BY
 -- or `get_obs_element_value_by_form_submission_field` instead of duplicating them
 -- TODO joins are duplicative, need more specific criteria of each event
 -- or need cleaner data of each ibu (some ibu submit the same form with same details more than once)
+-- or filter them (get only newest or oldest one) before join them

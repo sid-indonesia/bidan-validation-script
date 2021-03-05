@@ -44,6 +44,11 @@ FROM
 	sid3.tambah_kb tk;
 
 SELECT
+	DISTINCT kpk.keteranganefeksamping
+FROM
+	sid3.kohort_pelayanan_kb kpk;
+
+SELECT
 	*
 FROM
 	core."event" e
