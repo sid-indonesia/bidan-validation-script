@@ -11,7 +11,7 @@ WHERE
 	--	e."json" ->> 'baseEntityId' = 'a6f503e2-11f6-480c-a795-4a6599cc9d37'
 	--	AND
 	-- jsonb_pretty(e."json") ILIKE '%Child Regis%' AND 
- e."json" ->> 'baseEntityId' = '5dc5ef2e-2c65-4d51-ac41-c9c3e64fb127';
+ e."json" ->> 'baseEntityId' = '0903ce6d-a476-4b53-a4b6-9bd16f5e2f05';
 
 SELECT
 	*
@@ -25,8 +25,9 @@ SELECT
 FROM
 	core.client c
 WHERE
-	c."json" ->> 'baseEntityId' = '6fcc8b61-cbc3-4c62-8081-3f2f254df647';
-
+	c."json" ->> 'baseEntityId' = '0903ce6d-a476-4b53-a4b6-9bd16f5e2f05'
+	--c."json" ->> 'firstName' = 'husnul khotimah'
+;
 SELECT
 	*
 FROM

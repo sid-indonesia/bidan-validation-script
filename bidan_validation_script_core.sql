@@ -1173,6 +1173,56 @@ SELECT
 	e_kunjungan_neonatal,
 	'hb0',
 	'2019-09-16') AS "8-imunisasi_hb0_is_2019-09-16",
+	core.check_obs_element_value('values',
+	e_kohort_kunjungan_bayi_perbulan,
+	'tanggalKunjunganBayiPerbulan',
+	'2019-09-22') AS "9-tanggal_kunjungan_is_2019-09-22",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'lokasiPeriksa',
+	'%Posyandu%') AS "9-lokasi_periksa_is_posyandu",
+	core.check_obs_element_value('values',
+	e_kohort_kunjungan_bayi_perbulan,
+	'panjangBayi',
+	'51') AS "9-panjang_bayi_in_cm_is_51",
+	core.check_obs_element_value('values',
+	e_kohort_kunjungan_bayi_perbulan,
+	'beratBayi',
+	'3500') AS "9-berat_bayi_in_gram_is_3500",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'indikatorBeratBadanBayi',
+	'B') AS "9-indikator_berat_badan_bayi_is_B",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'AsiAksklusif',
+	'1') AS "9-ASI_eksklusif_is_1",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'hasilDilakukannyaKPSP',
+	'NA') AS "9-KPSP_is_tidak_dilakukan",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'pelayananVita',
+	'jika_tidak_dilakukan') AS "9-pelayanan_vit_a_is_tidak_dilakukan",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'statusKesehatanBayi',
+	'Sehat') AS "9-status_kesehatan_bayi_is_sehat",
+	CASE
+		WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+		e_kohort_kunjungan_bayi_perbulan,
+		'penyakit') IS NULL THEN 1
+		ELSE 0
+	END AS "7-penyakit_is_null",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'mtbs',
+	'Tidak') AS "9-mtbs_is_tidak",
+	core.check_obs_element_value('humanReadableValues',
+	e_kohort_kunjungan_bayi_perbulan,
+	'rujukanBayi',
+	'Tidak') AS "9-rujukan_bayi_is_tidak",
 	ibu."json" ->> 'dateCreated' AS date_created
 FROM
 	client ibu
@@ -1283,6 +1333,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan neonatal') e_kunjungan_neonatal ON
 	anak."json" ->> 'baseEntityId' = e_kunjungan_neonatal."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Kohort Kunjungan Bayi Perbulan') e_kohort_kunjungan_bayi_perbulan ON
+	anak."json" ->> 'baseEntityId' = e_kohort_kunjungan_bayi_perbulan."json" ->> 'baseEntityId'
 WHERE
 	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'

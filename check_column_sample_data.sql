@@ -29,9 +29,14 @@ FROM
 	sid3.kunjungan_pnc kp;
 
 SELECT
-	DISTINCT kn.pemeriksaanneonatal 
+	DISTINCT kn.kondisibayi
 FROM
 	sid3.kunjungan_neonatal kn;
+
+SELECT
+	DISTINCT kkbp.mtbs
+FROM
+	sid3.kohort_kunjungan_bayi_perbulan kkbp;
 
 SELECT
 	*
@@ -58,9 +63,7 @@ WHERE
 	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
-	AND c."json" ->> 'firstName' <> '-'
-	AND c."json" ->> 'lastName' <> '-'
-	AND c."json" -> 'relationships' -> 'childId' ->> 1 IS NOT NULL
+	AND c."json" -> 'relationships' ->> 'childId' IS NOT NULL
 ORDER BY
 	1;
 
