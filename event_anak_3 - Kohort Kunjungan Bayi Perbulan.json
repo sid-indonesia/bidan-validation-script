@@ -1,0 +1,175 @@
+{
+  "_id": "2c5b2d3b-ae94-4366-aa76-2c88f3f8c704",
+  "obs": [
+    {
+      "values": [
+        "2019-09-22"
+      ],
+      "fieldCode": "160753AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "date",
+      "formSubmissionField": "tanggalKunjunganBayiPerbulan",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "163121AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161010AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "lokasiPeriksa",
+      "humanReadableValues": [
+        "Posyandu"
+      ]
+    },
+    {
+      "values": [
+        "NaN"
+      ],
+      "fieldCode": "1532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "babyAge",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "4"
+      ],
+      "fieldCode": "1886AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "hidden",
+      "formSubmissionField": "kunjunganBayiKe",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "51"
+      ],
+      "fieldCode": "5090AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "panjangBayi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "3500"
+      ],
+      "fieldCode": "5089AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "decimal",
+      "formSubmissionField": "beratBayi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1597AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1854AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "indikatorBeratBadanBayi",
+      "humanReadableValues": [
+        "B"
+      ]
+    },
+    {
+      "values": [
+        "1"
+      ],
+      "fieldCode": "1398AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "AsiAksklusif",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1854AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "statusGizi",
+      "humanReadableValues": [
+        "GB"
+      ]
+    },
+    {
+      "values": [
+        "160737AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1200AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "hasilDilakukannyaKPSP",
+      "humanReadableValues": [
+        "NA"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "161534AAAAAAAAAA AAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "pelayananVita",
+      "humanReadableValues": [
+        "jika_tidak_dilakukan"
+      ]
+    },
+    {
+      "values": [
+        "159405AAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "159640AAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "statusKesehatanBayi",
+      "humanReadableValues": [
+        "Sehat"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1651AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "mtbs",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    },
+    {
+      "values": [
+        "1066AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      ],
+      "fieldCode": "1788AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "select one",
+      "formSubmissionField": "rujukanBayi",
+      "humanReadableValues": [
+        "Tidak"
+      ]
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614499059100,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Kohort Kunjungan Bayi Perbulan",
+  "entityType": "anak",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.401+08:00",
+  "identifiers": {},
+  "baseEntityId": "5dc5ef2e-2c65-4d51-ac41-c9c3e64fb127",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "8a212a94-c491-4971-90d2-27816dd99ec8"
+}

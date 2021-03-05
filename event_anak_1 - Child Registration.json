@@ -1,0 +1,49 @@
+{
+  "_id": "c9f2ed23-1893-49aa-98d0-1c7392cb6e92",
+  "obs": [
+    {
+      "values": [
+        "Anjar Desi"
+      ],
+      "fieldCode": "1586AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "text",
+      "formSubmissionField": "namaBayi",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "2800"
+      ],
+      "fieldCode": "5916AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "integer",
+      "formSubmissionField": "beratLahir",
+      "humanReadableValues": []
+    },
+    {
+      "values": [
+        "no"
+      ],
+      "fieldCode": "1431AAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "fieldType": "concept",
+      "fieldDataType": "calculate",
+      "formSubmissionField": "HighRiskChildLowBirthweght",
+      "humanReadableValues": []
+    }
+  ],
+  "_rev": "v1",
+  "type": "Event",
+  "version": 1614498891213,
+  "duration": 0,
+  "eventDate": "2021-02-28T00:00:00.000+08:00",
+  "eventType": "Child Registration",
+  "entityType": "anak",
+  "locationId": "c889a566-cab7-423d-9b08-7b1419d6dfcc",
+  "providerId": "demo",
+  "dateCreated": "2021-02-28T16:03:52.397+08:00",
+  "identifiers": {},
+  "baseEntityId": "5dc5ef2e-2c65-4d51-ac41-c9c3e64fb127",
+  "serverVersion": 1614499432377,
+  "formSubmissionId": "fb4742d9-be35-4cd4-a3bc-fb4aaf463c2c"
+}

@@ -51,9 +51,9 @@ WHERE
 LIMIT 1 $$ LANGUAGE SQL;
 
 SELECT
-	c."json" ->> 'firstName' AS candidate_name,
+	ibu."json" ->> 'firstName' AS candidate_name,
 	(CASE
-		WHEN c."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'gps' IS NOT NULL THEN 1
+		WHEN ibu."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'gps' IS NOT NULL THEN 1
 		ELSE 0
 	END) AS "1-is_gps_has_value",
 	(CASE
@@ -96,23 +96,23 @@ SELECT
 		ELSE 0
 	END) AS "1-puskesmas_is_rarang",
 	(CASE
-		WHEN c."json" -> 'attributes' ->> 'NoIbu' = '234431' THEN 1
+		WHEN ibu."json" -> 'attributes' ->> 'NoIbu' = '234431' THEN 1
 		ELSE 0
 	END) AS "1-no_ibu_is_234431",
 	(CASE
-		WHEN c."json" -> 'attributes' ->> 'nik' = '5239018761921302' THEN 1
+		WHEN ibu."json" -> 'attributes' ->> 'nik' = '5239018761921302' THEN 1
 		ELSE 0
 	END) AS "1-nik_is_5239018761921302",
 	(CASE
-		WHEN c."json" ->> 'lastName' ILIKE '%Joko%Prayitno%' THEN 1
+		WHEN ibu."json" ->> 'lastName' ILIKE '%Joko%Prayitno%' THEN 1
 		ELSE 0
 	END) AS "1-husband_name_is_joko_prayitno",
 	(CASE
-		WHEN c."json" ->> 'birthdate' = '1994-03-04T08:00:00.000+08:00' THEN 1
+		WHEN ibu."json" ->> 'birthdate' = '1994-03-04T08:00:00.000+08:00' THEN 1
 		ELSE 0
 	END) AS "1-birth_date_is_4_march_1994",
 	(CASE
-		WHEN c."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'address3' ILIKE '%Dusun%Sayang%RT%1%RW%2%,%Desa%Rarang%Batas%' THEN 1
+		WHEN ibu."json" -> 'addresses' -> 0 -> 'addressFields' ->> 'address3' ILIKE '%Dusun%Sayang%RT%1%RW%2%,%Desa%Rarang%Batas%' THEN 1
 		ELSE 0
 	END) AS "1-is_alamat_domisili_correct",
 	(CASE
@@ -181,11 +181,11 @@ SELECT
 		ELSE 0
 	END) AS "1-posyandu_is_sayang",
 	(CASE
-		WHEN c."json" -> 'attributes' ->> 'NamaKader' ILIKE '%Ratna%' THEN 1
+		WHEN ibu."json" -> 'attributes' ->> 'NamaKader' ILIKE '%Ratna%' THEN 1
 		ELSE 0
 	END) AS "1-nama_kader_is_ratna",
 	(CASE
-		WHEN c."json" -> 'attributes' ->> 'NamaDukun' ILIKE '%Sanah%' THEN 1
+		WHEN ibu."json" -> 'attributes' ->> 'NamaDukun' ILIKE '%Sanah%' THEN 1
 		ELSE 0
 	END) AS "1-nama_dukun_is_sanah",
 	(CASE
@@ -1123,9 +1123,13 @@ SELECT
 	e_kunjungan_pnc,
 	'rujukan',
 	'Tidak') AS "7-rujukan_is_tidak",
-	c."json" ->> 'dateCreated' AS date_created
+	core.check_obs_element_value('humanReadableValues',
+	e_kunjungan_neonatal,
+	'lokasiPeriksa',
+	'%Puskesmas%') AS "8-lokasi_periksa_is_puskesmas",
+	ibu."json" ->> 'dateCreated' AS date_created
 FROM
-	client c
+	client ibu
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1133,7 +1137,7 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Identitas Ibu') e_identitas_ibu ON
-	c."json" ->> 'baseEntityId' = e_identitas_ibu."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_identitas_ibu."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1141,7 +1145,7 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Tambah ANC') e_tambah_anc ON
-	c."json" ->> 'baseEntityId' = e_tambah_anc."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_tambah_anc."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		DISTINCT sub_json."json"
@@ -1157,7 +1161,7 @@ LEFT JOIN (
 	WHERE
 		sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
 		AND sub_json.obs_data -> 'values' ->> 0 = '1') e_kunjungan_anc_ke_1 ON
-	c."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_1."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_1."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1165,7 +1169,7 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
-	c."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		DISTINCT sub_json."json"
@@ -1181,7 +1185,7 @@ LEFT JOIN (
 	WHERE
 		sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
 		AND sub_json.obs_data -> 'values' ->> 0 = '3') e_kunjungan_anc_ke_3 ON
-	c."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_3."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_3."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1189,7 +1193,7 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'rencana persalinan') e_rencana_persalinan ON
-	c."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1197,7 +1201,7 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Dokumentasi Persalinan') e_dokumentasi_persalinan ON
-	c."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
 LEFT JOIN (
 	SELECT
 		e."json"
@@ -1205,13 +1209,40 @@ LEFT JOIN (
 		"event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan PNC') e_kunjungan_pnc ON
-	c."json" ->> 'baseEntityId' = e_kunjungan_pnc."json" ->> 'baseEntityId'
+	ibu."json" ->> 'baseEntityId' = e_kunjungan_pnc."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		anak."json" -> 'relationships' -> 'ibuCaseId' ->> 0 AS ibu_case_id,
+		MAX(anak."json" ->> 'dateEdited') AS date_edited
+	FROM
+		client anak
+	GROUP BY
+		1) latest_anak ON
+	ibu."json" ->> 'baseEntityId' = latest_anak.ibu_case_id
+LEFT JOIN (
+	SELECT
+		anak."json"
+	FROM
+		client anak
+	WHERE
+		anak."json" -> 'relationships' ->> 'ibuCaseId' IS NOT NULL) anak ON
+	((ibu."json" -> 'relationships' -> 'childId' ->> 0 = anak."json" ->> 'baseEntityId'
+	OR ibu."json" -> 'relationships' -> 'childId' ->> 1 = anak."json" ->> 'baseEntityId')
+	AND latest_anak.date_edited = anak."json" ->> 'dateEdited')
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Kunjungan neonatal') e_kunjungan_neonatal ON
+	anak."json" ->> 'baseEntityId' = e_kunjungan_neonatal."json" ->> 'baseEntityId'
 WHERE
-	(c."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
-	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
-	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
-	AND c."json" ->> 'firstName' <> '-'
-	AND c."json" ->> 'lastName' <> '-'
+	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
+	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
+	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
+	AND ibu."json" ->> 'firstName' <> '-'
+	AND ibu."json" ->> 'lastName' <> '-'
 ORDER BY
 	1;
 -- TODO join latest child

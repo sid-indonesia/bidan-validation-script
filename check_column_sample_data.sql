@@ -33,15 +33,16 @@ SELECT
 FROM
 	core."event" e
 WHERE
-	e.json ->> 'obs' ILIKE '%pembengkakan%'
-	AND e.json ->> 'eventType' = 'Child Registration' ;
+	--	e.json ->> 'obs' ILIKE '%pembengkakan%'
+	--	AND
+ e.json ->> 'eventType' ILIKE '%Neonatal%' ;
 
 SELECT
 	*
 FROM
 	core."event" e
 WHERE
-	jsonb_pretty(e."json") ILIKE '%perineum%';
+	jsonb_pretty(e."json") ILIKE '%Imunisasi%';
 
 SELECT
 	c.json ->> 'firstName',
@@ -54,6 +55,7 @@ WHERE
 	OR c."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
 	AND c."json" ->> 'firstName' <> '-'
 	AND c."json" ->> 'lastName' <> '-'
+	AND c."json" -> 'relationships' -> 'childId' ->> 1 IS NOT NULL
 ORDER BY
 	1;
 

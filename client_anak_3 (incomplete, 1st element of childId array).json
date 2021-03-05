@@ -1,0 +1,26 @@
+{
+  "_id": "43b0bdcb-9170-4428-a85a-12f9b5d29db5",
+  "_rev": "v3",
+  "type": "Client",
+  "gender": "male",
+  "lastName": "-",
+  "addresses": [],
+  "birthdate": "2019-09-16T00:00:00.000+08:00",
+  "firstName": "-",
+  "attributes": {},
+  "dateEdited": "2021-02-26T23:20:46.749+08:00",
+  "middleName": "null",
+  "dateCreated": "2021-02-26T23:19:36.805+08:00",
+  "identifiers": {
+    "OPENMRS_UUID": "6d24bf95-b968-490b-8393-412168429531"
+  },
+  "baseEntityId": "30bcdfcd-6bd2-4222-a1ff-0ecef3121c5b",
+  "relationships": {
+    "ibuCaseId": [
+      "01cd5bae-7e98-4ecc-97c1-538861faed20"
+    ]
+  },
+  "serverVersion": 1614352776726,
+  "birthdateApprox": false,
+  "deathdateApprox": false
+}
