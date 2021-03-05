@@ -29,6 +29,11 @@ FROM
 	sid3.kunjungan_pnc kp;
 
 SELECT
+	DISTINCT kn.pemeriksaanneonatal 
+FROM
+	sid3.kunjungan_neonatal kn;
+
+SELECT
 	*
 FROM
 	core."event" e
