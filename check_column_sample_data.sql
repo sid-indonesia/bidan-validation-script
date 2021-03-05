@@ -34,7 +34,7 @@ FROM
 	sid3.kunjungan_neonatal kn;
 
 SELECT
-	DISTINCT kkbp.mtbs
+	DISTINCT kkbp.rujukanbayi
 FROM
 	sid3.kohort_kunjungan_bayi_perbulan kkbp;
 

@@ -1214,7 +1214,7 @@ SELECT
 		e_kohort_kunjungan_bayi_perbulan,
 		'penyakit') IS NULL THEN 1
 		ELSE 0
-	END AS "7-penyakit_is_null",
+	END AS "9-penyakit_is_null",
 	core.check_obs_element_value('humanReadableValues',
 	e_kohort_kunjungan_bayi_perbulan,
 	'mtbs',
@@ -1223,6 +1223,18 @@ SELECT
 	e_kohort_kunjungan_bayi_perbulan,
 	'rujukanBayi',
 	'Tidak') AS "9-rujukan_bayi_is_tidak",
+	core.check_obs_element_value('values',
+	e_imunisasi_bayi,
+	'hb0',
+	'2019-10-20') AS "10-imunisasi_hb0_is_2019-10-20",
+	core.check_obs_element_value('values',
+	e_imunisasi_bayi,
+	'bcg',
+	'2019-10-20') AS "10-imunisasi_bcg_is_2019-10-20",
+	core.check_obs_element_value('values',
+	e_imunisasi_bayi,
+	'polio1',
+	'2019-10-20') AS "10-imunisasi_polio1_is_2019-10-20",
 	ibu."json" ->> 'dateCreated' AS date_created
 FROM
 	client ibu
@@ -1341,6 +1353,14 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Kohort Kunjungan Bayi Perbulan') e_kohort_kunjungan_bayi_perbulan ON
 	anak."json" ->> 'baseEntityId' = e_kohort_kunjungan_bayi_perbulan."json" ->> 'baseEntityId'
+LEFT JOIN (
+	SELECT
+		e."json"
+	FROM
+		"event" e
+	WHERE
+		e."json" ->> 'eventType' = 'Imunisasi Bayi') e_imunisasi_bayi ON
+	anak."json" ->> 'baseEntityId' = e_imunisasi_bayi."json" ->> 'baseEntityId'
 WHERE
 	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
 	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
