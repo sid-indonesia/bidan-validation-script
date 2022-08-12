@@ -1,54 +1,52 @@
-DROP TYPE IF EXISTS core.core_event_json CASCADE;
-
-CREATE TYPE core.core_event_json AS ( json jsonb );
-
-CREATE OR REPLACE
-FUNCTION core.check_obs_element_value(TEXT,
-core.core_event_json,
-TEXT,
-TEXT ) RETURNS int AS $$
-SELECT
-	(CASE
-		WHEN (
-		SELECT
-			sub_json.obs_data -> $1 ->> 0
-		FROM
-			(
-			SELECT
-				jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
-		WHERE
-			sub_json.obs_data ->> 'formSubmissionField' = $3
-		LIMIT 1) ILIKE $4 THEN 1
-		ELSE 0
-	END) $$ LANGUAGE SQL;
-
-CREATE OR REPLACE
-FUNCTION core.get_obs_element_value_by_form_submission_field(TEXT,
-core.core_event_json,
-TEXT) RETURNS TEXT AS $$
-SELECT
-	sub_json.obs_data -> $1 ->> 0
-FROM
-	(
-	SELECT
-		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
-WHERE
-	sub_json.obs_data ->> 'formSubmissionField' = $3
-LIMIT 1 $$ LANGUAGE SQL;
-
-CREATE OR REPLACE
-FUNCTION core.get_obs_element_value_by_form_submission_field_as_text(TEXT,
-core.core_event_json,
-TEXT) RETURNS TEXT AS $$
-SELECT
-	sub_json.obs_data ->> $1
-FROM
-	(
-	SELECT
-		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
-WHERE
-	sub_json.obs_data ->> 'formSubmissionField' = $3
-LIMIT 1 $$ LANGUAGE SQL;
+--CREATE TYPE core.core_event_json AS ( json jsonb );
+--
+--CREATE 
+--FUNCTION core.check_obs_element_value(TEXT,
+--core.core_event_json,
+--TEXT,
+--TEXT ) RETURNS int AS $$
+--SELECT
+--	(CASE
+--		WHEN (
+--		SELECT
+--			sub_json.obs_data -> $1 ->> 0
+--		FROM
+--			(
+--			SELECT
+--				jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
+--		WHERE
+--			sub_json.obs_data ->> 'formSubmissionField' = $3
+--		LIMIT 1) ILIKE $4 THEN 1
+--		ELSE 0
+--	END) $$ LANGUAGE SQL;
+--
+--CREATE 
+--FUNCTION core.get_obs_element_value_by_form_submission_field(TEXT,
+--core.core_event_json,
+--TEXT) RETURNS TEXT AS $$
+--SELECT
+--	sub_json.obs_data -> $1 ->> 0
+--FROM
+--	(
+--	SELECT
+--		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
+--WHERE
+--	sub_json.obs_data ->> 'formSubmissionField' = $3
+--LIMIT 1 $$ LANGUAGE SQL;
+--
+--CREATE 
+--FUNCTION core.get_obs_element_value_by_form_submission_field_as_text(TEXT,
+--core.core_event_json,
+--TEXT) RETURNS TEXT AS $$
+--SELECT
+--	sub_json.obs_data ->> $1
+--FROM
+--	(
+--	SELECT
+--		jsonb_array_elements($2."json" #> '{obs}') AS obs_data ) sub_json
+--WHERE
+--	sub_json.obs_data ->> 'formSubmissionField' = $3
+--LIMIT 1 $$ LANGUAGE SQL;
 
 SELECT
 	ibu."json" ->> 'firstName' AS candidate_name,
@@ -1307,14 +1305,15 @@ SELECT
 	e_kohort_pelayanan_kb,
 	'keteranganEfekSamping',
 	'%Perdarahan%dan%sering%pusing%') AS "12-keterangan_efek_samping_is_perdarahan_dan_sering_pusing",
-	ibu."json" ->> 'dateCreated' AS date_created
+	ibu."json" ->> 'dateCreated' AS date_created,
+	e_identitas_ibu."json" ->> 'providerId' AS provider_id
 FROM
-	client ibu
+	core.client ibu
 LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Identitas Ibu') e_identitas_ibu ON
 	ibu."json" ->> 'baseEntityId' = e_identitas_ibu."json" ->> 'baseEntityId'
@@ -1322,7 +1321,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Tambah ANC') e_tambah_anc ON
 	ibu."json" ->> 'baseEntityId' = e_tambah_anc."json" ->> 'baseEntityId'
@@ -1335,7 +1334,7 @@ LEFT JOIN (
 			e."json",
 			jsonb_array_elements(e."json" #> '{obs}') AS obs_data
 		FROM
-			"event" e
+			core."event" e
 		WHERE
 			e."json" ->> 'eventType' = 'Kunjungan ANC') sub_json
 	WHERE
@@ -1346,7 +1345,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
 	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
@@ -1359,7 +1358,7 @@ LEFT JOIN (
 			e."json",
 			jsonb_array_elements(e."json" #> '{obs}') AS obs_data
 		FROM
-			"event" e
+			core."event" e
 		WHERE
 			e."json" ->> 'eventType' = 'Kunjungan ANC') sub_json
 	WHERE
@@ -1370,7 +1369,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'rencana persalinan') e_rencana_persalinan ON
 	ibu."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
@@ -1378,7 +1377,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Dokumentasi Persalinan') e_dokumentasi_persalinan ON
 	ibu."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
@@ -1386,7 +1385,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan PNC') e_kunjungan_pnc ON
 	ibu."json" ->> 'baseEntityId' = e_kunjungan_pnc."json" ->> 'baseEntityId'
@@ -1395,7 +1394,7 @@ LEFT JOIN (
 		anak."json" -> 'relationships' -> 'ibuCaseId' ->> 0 AS ibu_case_id,
 		MAX(anak."json" ->> 'dateEdited') AS date_edited
 	FROM
-		client anak
+		core.client anak
 	GROUP BY
 		1) latest_anak ON
 	ibu."json" ->> 'baseEntityId' = latest_anak.ibu_case_id
@@ -1403,7 +1402,7 @@ LEFT JOIN (
 	SELECT
 		anak."json"
 	FROM
-		client anak
+		core.client anak
 	WHERE
 		anak."json" -> 'relationships' ->> 'ibuCaseId' IS NOT NULL) anak ON
 	((ibu."json" -> 'relationships' -> 'childId' ->> 0 = anak."json" ->> 'baseEntityId'
@@ -1413,7 +1412,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan neonatal') e_kunjungan_neonatal ON
 	anak."json" ->> 'baseEntityId' = e_kunjungan_neonatal."json" ->> 'baseEntityId'
@@ -1421,7 +1420,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kohort Kunjungan Bayi Perbulan') e_kohort_kunjungan_bayi_perbulan ON
 	anak."json" ->> 'baseEntityId' = e_kohort_kunjungan_bayi_perbulan."json" ->> 'baseEntityId'
@@ -1429,7 +1428,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Imunisasi Bayi') e_imunisasi_bayi ON
 	anak."json" ->> 'baseEntityId' = e_imunisasi_bayi."json" ->> 'baseEntityId'
@@ -1437,7 +1436,7 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Tambah KB') e_tambah_kb ON
 	ibu."json" ->> 'baseEntityId' = e_tambah_kb."json" ->> 'baseEntityId'
@@ -1445,16 +1444,20 @@ LEFT JOIN (
 	SELECT
 		e."json"
 	FROM
-		"event" e
+		core."event" e
 	WHERE
 		e."json" ->> 'eventType' = 'Kohort Pelayanan KB') e_kohort_pelayanan_kb ON
 	ibu."json" ->> 'baseEntityId' = e_kohort_pelayanan_kb."json" ->> 'baseEntityId'
 WHERE
-	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
-	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
-	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
-	AND ibu."json" ->> 'firstName' <> '-'
-	AND ibu."json" ->> 'lastName' <> '-'
+--	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
+--	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
+--	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
+--	AND
+	ibu."json" ->> 'dateCreated' BETWEEN '2022-08-07T00:00:00' AND '2022-08-11T17:00:00'
+	AND ibu."json" -> 'relationships' ->> 'ibuCaseId' IS NULL
+--	AND ibu."json" ->> 'firstName' <> '-'
+--	AND ibu."json" ->> 'lastName' <> '-'
+	AND e_identitas_ibu."json" ->> 'providerId' ILIKE 'demo_lotim'
 ORDER BY
 	1;
 -- client_anak having firstName
