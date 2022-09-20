@@ -1453,7 +1453,7 @@ WHERE
 --	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
 --	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
 --	AND
-	ibu."json" ->> 'dateCreated' BETWEEN '2022-08-07T00:00:00' AND '2022-08-11T17:00:00'
+	ibu."json" ->> 'dateCreated' BETWEEN '2022-09-07T13:00:00' AND '2022-09-09T17:00:00'
 	AND ibu."json" -> 'relationships' ->> 'ibuCaseId' IS NULL
 --	AND ibu."json" ->> 'firstName' <> '-'
 --	AND ibu."json" ->> 'lastName' <> '-'
