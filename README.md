@@ -16,4 +16,4 @@ See [Views generator scripts].
 Referenced document for validation: [Practical Assessment Bunda App Doc]
 
    [Views generator scripts]: <https://github.com/opensrp/opensrp-server-configs/pull/150>
-   [Practical Assessment Bunda App Doc]: <https://drive.google.com/file/d/1KUCfWX2Fe-wX9spmidbgKMmAiZtP4hLO/view?ts=60377105> (The link needs to be updated)
+   [Practical Assessment Bunda App Doc]: <https://docs.google.com/document/d/1KMCEw0LKZOjSfRn5v_xaFpsp9wE7R83r>
