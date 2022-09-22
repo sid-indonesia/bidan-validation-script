@@ -246,10 +246,133 @@ SELECT
         ELSE 0
     END AS "5-respiratory_rate_value_is_18",
     CASE
+        WHEN latest_physical_exam."obs.cardiac_exam.humanReadableValues" ILIKE '%2%'
+        THEN 1
+        ELSE 0
+    END AS "5-cardiac_exam_humanReadableValues_is_normal_or_2",
+    CASE
+        WHEN latest_physical_exam."obs.breast_exam.humanReadableValues" ILIKE '%1%'
+        THEN 1
+        ELSE 0
+    END AS "5-breast_exam_humanReadableValues_is_not_done_or_1",
+    CASE
+        WHEN latest_physical_exam."obs.abdominal_exam.humanReadableValues" ILIKE '%1%'
+        THEN 1
+        ELSE 0
+    END AS "5-abdominal_exam_humanReadableValues_is_not_done_or_1",
+    CASE
+        WHEN latest_physical_exam."obs.pelvic_exam.humanReadableValues" ILIKE '%1%'
+        THEN 1
+        ELSE 0
+    END AS "5-pelvic_exam_humanReadableValues_is_not_done_or_1",
+    CASE
         WHEN latest_physical_exam."obs.oedema.humanReadableValues" ILIKE '%no%'
         THEN 1
         ELSE 0
-    END AS "5-oedema_humanReadableValues_is_no"
+    END AS "5-oedema_humanReadableValues_is_no",
+    CASE
+        WHEN latest_physical_exam."obs.sfh.values" ILIKE '%16%'
+        THEN 1
+        ELSE 0
+    END AS "5-sfh_value_is_16",
+    CASE
+        WHEN latest_physical_exam."obs.fetal_heart_rate.values" ILIKE '%138%'
+        THEN 1
+        ELSE 0
+    END AS "5-fetal_heart_rate_value_is_138",
+    CASE
+        WHEN latest_physical_exam."obs.no_of_fetuses_unknown.humanReadableValues" ILIKE '%tidak diketahui%'
+        THEN 1
+        ELSE 0
+    END AS "5-no_of_fetuses_unknown_humanReadableValues_is_tidak diketahui",
+    CASE
+        WHEN (
+            latest_tests."obs.hb_gmeter.values" ILIKE '%9.8%'
+            OR latest_tests."obs.hb_result.values" ILIKE '%9.8%'
+        )
+        THEN 1
+        ELSE 0
+    END AS "6-hb_gmeter_value_is_9.8",
+    CASE
+        WHEN latest_tests."obs.blood_type.values" ILIKE '%163117AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%'
+        THEN 1
+        ELSE 0
+    END AS "6-blood_type_value_is_AB_or_163117AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    CASE
+        WHEN latest_tests."obs.rh_factor.values" ILIKE '%664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%'
+        THEN 1
+        ELSE 0
+    END AS "6-rh_factor_value_is_positif_or_664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.caffeine_counsel.humanReadableValues" ILIKE '%["done"]%'
+        THEN 1
+        ELSE 0
+    END AS "7-caffeine_counsel_humanReadableValues_is_done",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.tobacco_counsel.humanReadableValues" ILIKE '%["done"]%'
+        THEN 1
+        ELSE 0
+    END AS "7-tobacco_counsel_humanReadableValues_is_done",
+    CASE
+        WHEN (
+            latest_counselling_and_treatment."obs.condom_counsel.humanReadableValues" ILIKE '%["done"]%'
+            OR latest_counselling_and_treatment."obs.condom_counsel.humanReadableValues" IS NULL
+        )
+        THEN 1
+        ELSE 0
+    END AS "7-condom_counsel_humanReadableValues_is_done_or_null",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.eat_exercise_counsel.humanReadableValues" ILIKE '%["done"]%'
+        THEN 1
+        ELSE 0
+    END AS "7-eat_exercise_counsel_humanReadableValues_is_done",
+    CASE
+        WHEN (
+            latest_counselling_and_treatment."obs.danger_signs_counsel.humanReadableValues" ILIKE '%["done"]%'
+            OR latest_counselling_and_treatment."obs.danger_signs_counsel.humanReadableValues" IS NULL
+        )
+        THEN 1
+        ELSE 0
+    END AS "7-danger_signs_counsel_humanReadableValues_is_done_or_null",
+    CASE
+        WHEN (
+            latest_counselling_and_treatment."obs.anc_contact_counsel.humanReadableValues" ILIKE '%["done"]%'
+            OR latest_counselling_and_treatment."obs.anc_contact_counsel.humanReadableValues" IS NULL
+        )
+        THEN 1
+        ELSE 0
+    END AS "7-anc_contact_counsel_humanReadableValues_is_done_or_null",
+    CASE
+        WHEN (
+            latest_counselling_and_treatment."obs.family_planning_counsel.humanReadableValues" ILIKE '%["done"]%'
+            OR latest_counselling_and_treatment."obs.family_planning_counsel.humanReadableValues" IS NULL
+        )
+        THEN 1
+        ELSE 0
+    END AS "7-family_planning_counsel_humanReadableValues_is_done_or_null",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.family_planning_type.humanReadableValues" ILIKE '%cu_iud%'
+        THEN 1
+        ELSE 0
+    END AS "7-family_planning_type_humanReadableValues_is_cu_iud",
+    CASE
+        WHEN (
+            latest_counselling_and_treatment."obs.ipv_support.humanReadableValues" ILIKE '%done%'
+            OR latest_counselling_and_treatment."obs.ipv_support.humanReadableValues" IS NULL
+        )
+        THEN 1
+        ELSE 0
+    END AS "7-ipv_support_humanReadableValues_is_done_or_null",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.calcium_supp.humanReadableValues" ILIKE '%["done"]%'
+        THEN 1
+        ELSE 0
+    END AS "7-calcium_supp_humanReadableValues_is_done",
+    CASE
+        WHEN latest_counselling_and_treatment."obs.vita_supp.humanReadableValues" ILIKE '%["done"]%'
+        THEN 1
+        ELSE 0
+    END AS "7-vita_supp_humanReadableValues_is_done"
 FROM
     core.client_detailed_view the_mother
 LEFT JOIN
@@ -309,14 +432,37 @@ LEFT JOIN (
 LEFT JOIN
     core."event_Physical Exam_view" latest_physical_exam ON
     latest_physical_exam.id = latest_id_of_physical_exam.latest_id
---LEFT JOIN
---    core."event_Tests_view" tests ON
---    tests."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
---LEFT JOIN
---    core."event_Counselling and Treatment_view" counselling_and_treatment ON
---    counselling_and_treatment."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
+LEFT JOIN (
+    SELECT
+        a."baseEntityId",
+        max(a.id) AS latest_id
+    FROM
+        core."event_Tests_view" a
+    GROUP BY
+        a."baseEntityId"
+    ) latest_id_of_tests ON
+    latest_id_of_tests."baseEntityId" = the_mother."baseEntityId"
+LEFT JOIN
+    core."event_Tests_view" latest_tests ON
+    latest_tests.id = latest_id_of_tests.latest_id
+LEFT JOIN (
+    SELECT
+        a."baseEntityId",
+        max(a.id) AS latest_id
+    FROM
+        core."event_Counselling and Treatment_view" a
+    GROUP BY
+        a."baseEntityId"
+    ) latest_id_of_counselling_and_treatment ON
+    latest_id_of_counselling_and_treatment."baseEntityId" = the_mother."baseEntityId"
+LEFT JOIN
+    core."event_Counselling and Treatment_view" latest_counselling_and_treatment ON
+    latest_counselling_and_treatment.id = latest_id_of_counselling_and_treatment.latest_id
+WHERE
+    the_mother."dateCreated" BETWEEN '2022-09-21T15:04:00' AND '2022-09-22T23:00:00'
+    AND anc_registration."providerId" ILIKE 'sid'
+;
+
 --LEFT JOIN (
 --    SELECT
 --        a."baseEntityId",
@@ -334,17 +480,7 @@ LEFT JOIN
 --    contact_visit_3."baseEntityId" = the_mother."baseEntityId"
 --    AND contact_visit_3."Contact" = 'Contact 3'
 --    AND contact_visit_3.id = latest_id_of_contact_3.latest_id
---LEFT JOIN
---    core."event_Update ANC Registration_view" update_anc_registration ON
---    update_anc_registration."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
---LEFT JOIN
---    core."event_ANC Close_view" anc_close ON
---    anc_close."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
-WHERE
-    the_mother."baseEntityId" = '66ddf705-1dfa-4191-b26a-06ac843428ac'
-;
+
 
 
 -- Find out about duplication occurence(s)
