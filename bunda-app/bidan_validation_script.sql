@@ -357,12 +357,12 @@ SELECT
     END AS "7-family_planning_type_humanReadableValues_is_cu_iud",
     CASE
         WHEN (
-            latest_counselling_and_treatment."obs.ipv_support.humanReadableValues" ILIKE '%done%'
-            OR latest_counselling_and_treatment."obs.ipv_support.humanReadableValues" IS NULL
+            latest_counselling_and_treatment."obs.ifa_low_prev_prescribe_daily_dose.humanReadableValues" ILIKE '%done%'
+            OR latest_counselling_and_treatment."obs.ifa_low_prev_prescribe_daily_dose.humanReadableValues" IS NULL
         )
         THEN 1
         ELSE 0
-    END AS "7-ipv_support_humanReadableValues_is_done_or_null",
+    END AS "7-ifa_low_prev_prescribe_daily_dose_humanReadableValues_is_done_or_null",
     CASE
         WHEN latest_counselling_and_treatment."obs.calcium_supp.humanReadableValues" ILIKE '%["done"]%'
         THEN 1
@@ -459,8 +459,9 @@ LEFT JOIN
     core."event_Counselling and Treatment_view" latest_counselling_and_treatment ON
     latest_counselling_and_treatment.id = latest_id_of_counselling_and_treatment.latest_id
 WHERE
-    the_mother."dateCreated" BETWEEN '2022-09-21T15:04:00' AND '2022-09-22T23:00:00'
+    the_mother."dateCreated" BETWEEN '2022-09-21T15:04:00' AND '2022-09-23T23:00:00'
     AND anc_registration."providerId" ILIKE 'sid'
+--    the_mother."baseEntityId" = '66ddf705-1dfa-4191-b26a-06ac843428ac'
 ;
 
 --LEFT JOIN (
