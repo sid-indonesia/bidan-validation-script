@@ -115,10 +115,10 @@ SELECT
         ELSE 0
     END AS "3-hidup_or_live_births_value_is_1",
     CASE
-        WHEN latest_profile."obs.prev_preg_comps_other.values" ILIKE '%Premature%Hidup%SC%'
+        WHEN latest_profile."obs.last_live_birth_preterm.humanReadableValues" ILIKE '%yes%'
         THEN 1
         ELSE 0
-    END AS "3-prev_preg_comps_other_value_is_Premature_Hidup_SC",
+    END AS "3-last_live_birth_preterm_humanReadableValues_is_yes",
     CASE
         WHEN latest_profile."obs.prev_preg_comps.humanReadableValues" ILIKE '%Preeklam%sia%'
         THEN 1
@@ -183,7 +183,73 @@ SELECT
         WHEN latest_profile."obs.partner_hiv_status.humanReadableValues" ILIKE '%dont_know%'
         THEN 1
         ELSE 0
-    END AS "3-partner_hiv_status_humanReadableValues_is_dont_know"
+    END AS "3-partner_hiv_status_humanReadableValues_is_dont_know",
+    CASE
+        WHEN latest_symptoms_and_follow_up."obs.phys_symptoms.values" ILIKE '%Mual dan muntah%'
+        THEN 1
+        ELSE 0
+    END AS "4-phys_symptoms_values_are_Mual dan muntah",
+    CASE
+        WHEN latest_physical_exam."obs.height.values" ILIKE '%150%'
+        THEN 1
+        ELSE 0
+    END AS "5-height_value_is_150",
+    CASE
+        WHEN latest_physical_exam."obs.pregest_weight_unknown.humanReadableValues" ILIKE '%Berat badan pra-kehamilan tidak diketahui%'
+        THEN 1
+        ELSE 0
+    END AS "5-pregest_weight_unknown_humanReadableValues_is_tidak_diketahui",
+    CASE
+        WHEN latest_physical_exam."obs.current_weight.values" ILIKE '%45%'
+        THEN 1
+        ELSE 0
+    END AS "5-current_weight_value_is_45",
+    CASE
+        WHEN latest_physical_exam."obs.muac.values" ILIKE '%20.2%'
+        THEN 1
+        ELSE 0
+    END AS "5-muac_value_is_20.2",
+    CASE
+        WHEN (
+            latest_physical_exam."obs.bp_systolic.values" ILIKE '%140%'
+            OR latest_physical_exam."obs.bp_systolic_manual.values" ILIKE '%140%'
+        )
+        THEN 1
+        ELSE 0
+    END AS "5-bp_systolic_manual_value_is_140",
+    CASE
+        WHEN (
+            latest_physical_exam."obs.bp_diastolic.values" ILIKE '%90%'
+            OR latest_physical_exam."obs.bp_diastolic_manual.values" ILIKE '%90%'
+        )
+        THEN 1
+        ELSE 0
+    END AS "5-bp_diastolic_manual_value_is_90",
+    CASE
+        WHEN latest_physical_exam."obs.body_temp.values" ILIKE '%36.5%'
+        THEN 1
+        ELSE 0
+    END AS "5-body_temp_value_is_36.5",
+    CASE
+        WHEN latest_physical_exam."obs.pulse_rate.values" ILIKE '%78%'
+        THEN 1
+        ELSE 0
+    END AS "5-pulse_rate_value_is_78",
+    CASE
+        WHEN latest_physical_exam."obs.pallor.humanReadableValues" ILIKE '%yes%'
+        THEN 1
+        ELSE 0
+    END AS "5-pallor_humanReadableValues_is_yes",
+    CASE
+        WHEN latest_physical_exam."obs.respiratory_rate.values" ILIKE '%18%'
+        THEN 1
+        ELSE 0
+    END AS "5-respiratory_rate_value_is_18",
+    CASE
+        WHEN latest_physical_exam."obs.oedema.humanReadableValues" ILIKE '%no%'
+        THEN 1
+        ELSE 0
+    END AS "5-oedema_humanReadableValues_is_no"
 FROM
     core.client_detailed_view the_mother
 LEFT JOIN
@@ -217,14 +283,32 @@ LEFT JOIN (
 LEFT JOIN
     core."event_Profile_view" latest_profile ON
     latest_profile.id = latest_id_of_profile.latest_id
---LEFT JOIN
---    core."event_Symptoms and Follow-up_view" symptoms_and_follow_up ON
---    symptoms_and_follow_up."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
---LEFT JOIN
---    core."event_Physical Exam_view" physical_exam ON
---    physical_exam."baseEntityId" = the_mother."baseEntityId"
---    -- TODO be more selective, because there are duplicates
+LEFT JOIN (
+    SELECT
+        a."baseEntityId",
+        max(a.id) AS latest_id
+    FROM
+        core."event_Symptoms and Follow-up_view" a
+    GROUP BY
+        a."baseEntityId"
+    ) latest_id_of_symptoms_and_follow_up ON
+    latest_id_of_symptoms_and_follow_up."baseEntityId" = the_mother."baseEntityId"
+LEFT JOIN
+    core."event_Symptoms and Follow-up_view" latest_symptoms_and_follow_up ON
+    latest_symptoms_and_follow_up.id = latest_id_of_symptoms_and_follow_up.latest_id
+LEFT JOIN (
+    SELECT
+        a."baseEntityId",
+        max(a.id) AS latest_id
+    FROM
+        core."event_Physical Exam_view" a
+    GROUP BY
+        a."baseEntityId"
+    ) latest_id_of_physical_exam ON
+    latest_id_of_physical_exam."baseEntityId" = the_mother."baseEntityId"
+LEFT JOIN
+    core."event_Physical Exam_view" latest_physical_exam ON
+    latest_physical_exam.id = latest_id_of_physical_exam.latest_id
 --LEFT JOIN
 --    core."event_Tests_view" tests ON
 --    tests."baseEntityId" = the_mother."baseEntityId"
@@ -258,8 +342,8 @@ LEFT JOIN
 --    core."event_ANC Close_view" anc_close ON
 --    anc_close."baseEntityId" = the_mother."baseEntityId"
 --    -- TODO be more selective, because there are duplicates
---WHERE
---    the_mother."baseEntityId" = '66ddf705-1dfa-4191-b26a-06ac843428ac'
+WHERE
+    the_mother."baseEntityId" = '66ddf705-1dfa-4191-b26a-06ac843428ac'
 ;
 
 

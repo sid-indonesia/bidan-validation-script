@@ -850,11 +850,11 @@ WHERE
 --	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
 --	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
 --	AND
-	ibu."json" ->> 'dateCreated' BETWEEN '2022-08-24T00:00:00' AND '2022-08-24T23:00:00'
+	ibu."json" ->> 'dateCreated' BETWEEN '2022-09-21T15:04:00' AND '2022-09-22T23:00:00'
 	AND ibu."json" -> 'relationships' ->> 'ibuCaseId' IS NULL
 --	AND ibu."json" ->> 'firstName' <> '-'
 --	AND ibu."json" ->> 'lastName' <> '-'
-	AND e_identitas_ibu."json" ->> 'providerId' ILIKE 'demo_lotim'
+	AND e_identitas_ibu."json" ->> 'providerId' ILIKE 'sid885'
 ORDER BY
 	1;
 -- client_anak having firstName
