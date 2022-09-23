@@ -90,10 +90,10 @@ SELECT
         ELSE 0
     END AS "3-ultrasound_done_humanReadableValues_is_equal_to_no",
     CASE
-        WHEN latest_profile."obs.lmp_gest_age.values" ILIKE '%15 minggu 5 hari%'
+        WHEN latest_profile."obs.lmp_gest_age_selection.humanReadableValues" ILIKE '%lmp%'
         THEN 1
         ELSE 0
-    END AS "3-lmp_gest_age_value_is_15 minggu 5 hari",
+    END AS "3-lmp_gest_age_selection_humanReadableValues_is_lmp",
     CASE
         WHEN latest_profile."obs.gravida.values" ILIKE '%3%'
         THEN 1
@@ -105,10 +105,10 @@ SELECT
         ELSE 0
     END AS "3-partus_or_stillbirths_value_is_1",
     CASE
-        WHEN latest_profile."obs.miscarriages_abortions.values" ILIKE '%0%'
+        WHEN latest_profile."obs.miscarriages_abortions.values" ILIKE '%1%'
         THEN 1
         ELSE 0
-    END AS "3-abortus_or_miscarriages_abortions_value_is_0",
+    END AS "3-abortus_or_miscarriages_abortions_value_is_1",
     CASE
         WHEN latest_profile."obs.live_births.values" ILIKE '%1%'
         THEN 1
@@ -372,7 +372,9 @@ SELECT
         WHEN latest_counselling_and_treatment."obs.vita_supp.humanReadableValues" ILIKE '%["done"]%'
         THEN 1
         ELSE 0
-    END AS "7-vita_supp_humanReadableValues_is_done"
+    END AS "7-vita_supp_humanReadableValues_is_done",
+    the_mother."dateCreated",
+    anc_registration."providerId"
 FROM
     core.client_detailed_view the_mother
 LEFT JOIN
@@ -459,9 +461,8 @@ LEFT JOIN
     core."event_Counselling and Treatment_view" latest_counselling_and_treatment ON
     latest_counselling_and_treatment.id = latest_id_of_counselling_and_treatment.latest_id
 WHERE
-    the_mother."dateCreated" BETWEEN '2022-09-21T15:04:00' AND '2022-09-23T23:00:00'
-    AND anc_registration."providerId" ILIKE 'sid'
---    the_mother."baseEntityId" = '66ddf705-1dfa-4191-b26a-06ac843428ac'
+    the_mother."dateCreated" BETWEEN '2022-09-23T00:04:00' AND '2022-09-23T23:00:00'
+--    AND anc_registration."providerId" ILIKE 'sid'
 ;
 
 --LEFT JOIN (
