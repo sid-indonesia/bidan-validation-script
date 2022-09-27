@@ -145,12 +145,12 @@ SELECT
         THEN 1
         ELSE 0
     END AS "3-health_conditions_humanReadableValues_is_Hipertensi",
-    CASE
-        WHEN latest_profile."obs.covid_vaccine_status.values" ILIKE '%covid_none%'
-        THEN 1
-        ELSE 0
-    END AS "3-covid_vaccine_status_value_is_none",
 -- empty in newer version of APK
+--    CASE
+--        WHEN latest_profile."obs.covid_vaccine_status.values" ILIKE '%covid_none%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-covid_vaccine_status_value_is_none",
 --    CASE
 --        WHEN latest_profile."obs.tt_immun_status.humanReadableValues" ILIKE '%ttcv_not_received%'
 --        THEN 1
