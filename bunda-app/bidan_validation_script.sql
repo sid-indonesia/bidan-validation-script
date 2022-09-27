@@ -1,7 +1,5 @@
 SELECT
     the_mother."firstName" || ' ' || the_mother."lastName" AS candidate_name,
---    anc_registration."obs.nik.values",
---    anc_registration."obs.bpjs.values",
     CASE
         WHEN anc_registration."obs.nik.values" ILIKE '%5203079868900084%'
         THEN 1
@@ -28,12 +26,12 @@ SELECT
         THEN 1
         ELSE 0
     END AS "1-phone_number_value_is_equal_to_087765420380",
---    anc_registration."obs.reminders.humanReadableValues",
-    CASE
-        WHEN anc_registration."obs.reminders.humanReadableValues" ILIKE '%yes%'
-        THEN 1
-        ELSE 0
-    END AS "1-reminders_is_equal_to_yes",
+-- empty in newer version of APK
+--    CASE
+--        WHEN anc_registration."obs.reminders.humanReadableValues" ILIKE '%yes%'
+--        THEN 1
+--        ELSE 0
+--    END AS "1-reminders_is_equal_to_yes",
     CASE
         -- Nama kontak alternatif (suami)
         WHEN anc_registration."obs.alt_name.values" ILIKE '%Ahmad%'
@@ -51,29 +49,30 @@ SELECT
         THEN 1
         ELSE 0
     END AS "1-cohabitants_values_are_equal_to_Orang tua_Pasangan",
-    CASE
-        WHEN quick_check_first_contact."obs.contact_reason.humanReadableValues" ILIKE '%first_contact%'
-        THEN 1
-        ELSE 0
-    END AS "2-contact_reason_humanReadableValues_is_equal_to_first_contact",
-    CASE
-        WHEN quick_check_first_contact."obs.danger_signs.humanReadableValues" ILIKE '%Tidak ada%'
-        THEN 1
-        ELSE 0
-    END AS "2-danger_signs_humanReadableValues_is_equal_to_Tidak ada",
-    CASE
-        WHEN (
-            latest_profile."obs.educ_level.humanReadableValues" ILIKE '%shs%'
-            OR latest_profile."obs.educ_level.humanReadableValues" ILIKE '%secondary%'
-        )
-        THEN 1
-        ELSE 0
-    END AS "3-educ_level_humanReadableValues_is_equal_to_shs_or_secondary",
-    CASE
-        WHEN latest_profile."obs.marital_status.humanReadableValues" ILIKE '%married%'
-        THEN 1
-        ELSE 0
-    END AS "3-marital_status_humanReadableValues_is_equal_to_married",
+-- empty in newer version of APK
+--    CASE
+--        WHEN quick_check_first_contact."obs.contact_reason.humanReadableValues" ILIKE '%first_contact%'
+--        THEN 1
+--        ELSE 0
+--    END AS "2-contact_reason_humanReadableValues_is_equal_to_first_contact",
+--    CASE
+--        WHEN quick_check_first_contact."obs.danger_signs.humanReadableValues" ILIKE '%Tidak ada%'
+--        THEN 1
+--        ELSE 0
+--    END AS "2-danger_signs_humanReadableValues_is_equal_to_Tidak ada",
+--    CASE
+--        WHEN (
+--            latest_profile."obs.educ_level.humanReadableValues" ILIKE '%shs%'
+--            OR latest_profile."obs.educ_level.humanReadableValues" ILIKE '%secondary%'
+--        )
+--        THEN 1
+--        ELSE 0
+--    END AS "3-educ_level_humanReadableValues_is_equal_to_shs_or_secondary",
+--    CASE
+--        WHEN latest_profile."obs.marital_status.humanReadableValues" ILIKE '%married%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-marital_status_humanReadableValues_is_equal_to_married",
     CASE
         WHEN (
             latest_profile."obs.occupation.values" ILIKE '%housewife%'
@@ -87,26 +86,27 @@ SELECT
         THEN 1
         ELSE 0
     END AS "3-lmp_known_date_value_is_equal_to_03-06-2022",
-    CASE
-        WHEN latest_profile."obs.ultrasound_done.humanReadableValues" ILIKE '%no%'
-        THEN 1
-        ELSE 0
-    END AS "3-ultrasound_done_humanReadableValues_is_equal_to_no",
-    CASE
-        WHEN latest_profile."obs.lmp_gest_age_selection.humanReadableValues" ILIKE '%lmp%'
-        THEN 1
-        ELSE 0
-    END AS "3-lmp_gest_age_selection_humanReadableValues_is_lmp",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_profile."obs.ultrasound_done.humanReadableValues" ILIKE '%no%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-ultrasound_done_humanReadableValues_is_equal_to_no",
+--    CASE
+--        WHEN latest_profile."obs.lmp_gest_age_selection.humanReadableValues" ILIKE '%lmp%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-lmp_gest_age_selection_humanReadableValues_is_lmp",
     CASE
         WHEN latest_profile."obs.gravida.values" ILIKE '%3%'
         THEN 1
         ELSE 0
     END AS "3-gravida_value_is_3",
     CASE
-        WHEN latest_profile."obs.stillbirths.values" ILIKE '%1%'
+        WHEN latest_profile."obs.parity.values" ILIKE '%1%'
         THEN 1
         ELSE 0
-    END AS "3-partus_or_stillbirths_value_is_1",
+    END AS "3-parity_value_is_1",
     CASE
         WHEN latest_profile."obs.miscarriages_abortions.values" ILIKE '%1%'
         THEN 1
@@ -123,7 +123,10 @@ SELECT
         ELSE 0
     END AS "3-last_live_birth_preterm_humanReadableValues_is_yes",
     CASE
-        WHEN latest_profile."obs.prev_preg_comps.humanReadableValues" ILIKE '%Preeklam%sia%'
+        WHEN (
+            latest_profile."obs.prev_preg_comps.humanReadableValues" ILIKE '%Preeklam%sia%'
+            OR latest_profile."obs.preeclampsia_risk.values" ILIKE '%1%'
+        )
         THEN 1
         ELSE 0
     END AS "3-prev_preg_comps_humanReadableValues_is_Preeklamsia",
@@ -147,11 +150,12 @@ SELECT
         THEN 1
         ELSE 0
     END AS "3-covid_vaccine_status_value_is_none",
-    CASE
-        WHEN latest_profile."obs.tt_immun_status.humanReadableValues" ILIKE '%ttcv_not_received%'
-        THEN 1
-        ELSE 0
-    END AS "3-tt_immun_status_humanReadableValues_is_ttcv_not_received",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_profile."obs.tt_immun_status.humanReadableValues" ILIKE '%ttcv_not_received%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-tt_immun_status_humanReadableValues_is_ttcv_not_received",
     CASE
         WHEN latest_profile."obs.medications.humanReadableValues" ILIKE '%Tidak%ada%'
         THEN 1
@@ -162,31 +166,33 @@ SELECT
         THEN 1
         ELSE 0
     END AS "3-caffeine_intake_humanReadableValues_is_Lebih_dari_2_cangkir",
-    CASE
-        WHEN latest_profile."obs.tobacco_user.humanReadableValues" ILIKE '%no%'
-        THEN 1
-        ELSE 0
-    END AS "3-tobacco_user_humanReadableValues_is_no",
-    CASE
-        WHEN latest_profile."obs.condom_use.humanReadableValues" ILIKE '%no%'
-        THEN 1
-        ELSE 0
-    END AS "3-condom_use_humanReadableValues_is_no",
-    CASE
-        WHEN latest_profile."obs.alcohol_substance_enquiry.humanReadableValues" ILIKE '%yes%'
-        THEN 1
-        ELSE 0
-    END AS "3-alcohol_substance_enquiry_humanReadableValues_is_yes",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_profile."obs.tobacco_user.humanReadableValues" ILIKE '%no%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-tobacco_user_humanReadableValues_is_no",
+--    CASE
+--        WHEN latest_profile."obs.condom_use.humanReadableValues" ILIKE '%no%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-condom_use_humanReadableValues_is_no",
+--    CASE
+--        WHEN latest_profile."obs.alcohol_substance_enquiry.humanReadableValues" ILIKE '%yes%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-alcohol_substance_enquiry_humanReadableValues_is_yes",
     CASE
         WHEN latest_profile."obs.alcohol_substance_use.humanReadableValues" ILIKE '%Tidak%ada%'
         THEN 1
         ELSE 0
     END AS "3-alcohol_substance_use_humanReadableValues_is_Tidak ada",
-    CASE
-        WHEN latest_profile."obs.partner_hiv_status.humanReadableValues" ILIKE '%dont_know%'
-        THEN 1
-        ELSE 0
-    END AS "3-partner_hiv_status_humanReadableValues_is_dont_know",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_profile."obs.partner_hiv_status.humanReadableValues" ILIKE '%dont_know%'
+--        THEN 1
+--        ELSE 0
+--    END AS "3-partner_hiv_status_humanReadableValues_is_dont_know",
     CASE
         WHEN latest_symptoms_and_follow_up."obs.phys_symptoms.values" ILIKE '%Mual dan muntah%'
         THEN 1
@@ -238,41 +244,48 @@ SELECT
         THEN 1
         ELSE 0
     END AS "5-pulse_rate_value_is_78",
-    CASE
-        WHEN latest_physical_exam."obs.pallor.humanReadableValues" ILIKE '%yes%'
-        THEN 1
-        ELSE 0
-    END AS "5-pallor_humanReadableValues_is_yes",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_physical_exam."obs.pallor.humanReadableValues" ILIKE '%yes%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-pallor_humanReadableValues_is_yes",
     CASE
         WHEN latest_physical_exam."obs.respiratory_rate.values" ILIKE '%18%'
         THEN 1
         ELSE 0
     END AS "5-respiratory_rate_value_is_18",
-    CASE
-        WHEN latest_physical_exam."obs.cardiac_exam.humanReadableValues" ILIKE '%2%'
-        THEN 1
-        ELSE 0
-    END AS "5-cardiac_exam_humanReadableValues_is_normal_or_2",
-    CASE
-        WHEN latest_physical_exam."obs.breast_exam.humanReadableValues" ILIKE '%1%'
-        THEN 1
-        ELSE 0
-    END AS "5-breast_exam_humanReadableValues_is_not_done_or_1",
-    CASE
-        WHEN latest_physical_exam."obs.abdominal_exam.humanReadableValues" ILIKE '%1%'
-        THEN 1
-        ELSE 0
-    END AS "5-abdominal_exam_humanReadableValues_is_not_done_or_1",
-    CASE
-        WHEN latest_physical_exam."obs.pelvic_exam.humanReadableValues" ILIKE '%1%'
-        THEN 1
-        ELSE 0
-    END AS "5-pelvic_exam_humanReadableValues_is_not_done_or_1",
-    CASE
-        WHEN latest_physical_exam."obs.oedema.humanReadableValues" ILIKE '%no%'
-        THEN 1
-        ELSE 0
-    END AS "5-oedema_humanReadableValues_is_no",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_physical_exam."obs.cardiac_exam.humanReadableValues" ILIKE '%2%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-cardiac_exam_humanReadableValues_is_normal_or_2",
+--    CASE
+--        WHEN latest_physical_exam."obs.breast_exam.humanReadableValues" ILIKE '%1%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-breast_exam_humanReadableValues_is_not_done_or_1",
+--    CASE
+--        WHEN latest_physical_exam."obs.abdominal_exam.humanReadableValues" ILIKE '%1%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-abdominal_exam_humanReadableValues_is_not_done_or_1",
+--    CASE
+--        WHEN latest_physical_exam."obs.pelvic_exam.humanReadableValues" ILIKE '%1%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-pelvic_exam_humanReadableValues_is_not_done_or_1",
+--    CASE
+--        WHEN latest_physical_exam."obs.cervical_exam.humanReadableValues" ILIKE '%1%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-cervical_exam_humanReadableValues_is_not_done_or_1",
+--    CASE
+--        WHEN latest_physical_exam."obs.oedema.humanReadableValues" ILIKE '%no%'
+--        THEN 1
+--        ELSE 0
+--    END AS "5-oedema_humanReadableValues_is_no",
     CASE
         WHEN latest_physical_exam."obs.sfh.values" ILIKE '%16%'
         THEN 1
@@ -297,45 +310,46 @@ SELECT
         ELSE 0
     END AS "6-hb_gmeter_value_is_9.8",
     CASE
-        WHEN latest_tests."obs.blood_type.values" ILIKE '%163117AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%'
+        WHEN latest_tests."obs.blood_type.values" ILIKE '%AB%'
         THEN 1
         ELSE 0
-    END AS "6-blood_type_value_is_AB_or_163117AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    END AS "6-blood_type_value_is_AB",
     CASE
-        WHEN latest_tests."obs.rh_factor.values" ILIKE '%664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%'
+        WHEN latest_tests."obs.rh_factor.values" ILIKE '%Positif%'
         THEN 1
         ELSE 0
-    END AS "6-rh_factor_value_is_positif_or_664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.caffeine_counsel.humanReadableValues" ILIKE '%["done"]%'
-        THEN 1
-        ELSE 0
-    END AS "7-caffeine_counsel_humanReadableValues_is_done",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.tobacco_counsel.humanReadableValues" ILIKE '%["done"]%'
-        THEN 1
-        ELSE 0
-    END AS "7-tobacco_counsel_humanReadableValues_is_done",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.eat_exercise_counsel.humanReadableValues" ILIKE '%["done"]%'
-        THEN 1
-        ELSE 0
-    END AS "7-eat_exercise_counsel_humanReadableValues_is_done",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.family_planning_type.humanReadableValues" ILIKE '%cu_iud%'
-        THEN 1
-        ELSE 0
-    END AS "7-family_planning_type_humanReadableValues_is_cu_iud",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.calcium_supp.humanReadableValues" ILIKE '%["done"]%'
-        THEN 1
-        ELSE 0
-    END AS "7-calcium_supp_humanReadableValues_is_done",
-    CASE
-        WHEN latest_counselling_and_treatment."obs.vita_supp.humanReadableValues" ILIKE '%["done"]%'
-        THEN 1
-        ELSE 0
-    END AS "7-vita_supp_humanReadableValues_is_done",
+    END AS "6-rh_factor_value_is_positif",
+-- empty in newer version of APK
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.caffeine_counsel.humanReadableValues" ILIKE '%["done"]%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-caffeine_counsel_humanReadableValues_is_done",
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.tobacco_counsel.humanReadableValues" ILIKE '%["done"]%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-tobacco_counsel_humanReadableValues_is_done",
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.eat_exercise_counsel.humanReadableValues" ILIKE '%["done"]%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-eat_exercise_counsel_humanReadableValues_is_done",
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.family_planning_type.humanReadableValues" ILIKE '%cu_iud%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-family_planning_type_humanReadableValues_is_cu_iud",
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.calcium_supp.humanReadableValues" ILIKE '%["done"]%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-calcium_supp_humanReadableValues_is_done",
+--    CASE
+--        WHEN latest_counselling_and_treatment."obs.vita_supp.humanReadableValues" ILIKE '%["done"]%'
+--        THEN 1
+--        ELSE 0
+--    END AS "7-vita_supp_humanReadableValues_is_done",
     the_mother."dateCreated",
     anc_registration."providerId",
     the_mother."baseEntityId"
@@ -425,7 +439,7 @@ LEFT JOIN
     core."event_Counselling and Treatment_view" latest_counselling_and_treatment ON
     latest_counselling_and_treatment.id = latest_id_of_counselling_and_treatment.latest_id
 WHERE
-    the_mother."dateCreated" BETWEEN '2022-09-26T00:00:00' AND '2022-09-26T23:00:00'
+    the_mother."dateCreated" BETWEEN '2022-09-22T00:00:00' AND '2022-09-27T23:00:00'
 --    AND anc_registration."providerId" ILIKE 'sid'
     AND (
         CASE
@@ -466,27 +480,27 @@ ORDER BY
 
 
 
--- Find out about duplication occurence(s)
-SELECT
-    a."baseEntityId",
-    count(*)
-FROM
-    core."event_ANC Close_view" a
---WHERE
---    a."obs.contact_reason.humanReadableValues" = '["first_contact"]'
-GROUP BY
-    a."baseEntityId"
-HAVING
-    count(*) > 1;
+-- -- Find out about duplication occurence(s)
+-- SELECT
+--     a."baseEntityId",
+--     count(*)
+-- FROM
+--     core."event_ANC Close_view" a
+-- --WHERE
+-- --    a."obs.contact_reason.humanReadableValues" = '["first_contact"]'
+-- GROUP BY
+--     a."baseEntityId"
+-- HAVING
+--     count(*) > 1;
 
 
--- Get latest ID of duplicates
-SELECT
-    a."baseEntityId",
-    max(a.id) AS latest_id
-FROM
-    core."event_Contact Visit detailed_view" a
-WHERE
-    a."Contact" = 'Contact 3'
-GROUP BY
-    a."baseEntityId";
+-- -- Get latest ID of duplicates
+-- SELECT
+--     a."baseEntityId",
+--     max(a.id) AS latest_id
+-- FROM
+--     core."event_Contact Visit detailed_view" a
+-- WHERE
+--     a."Contact" = 'Contact 3'
+-- GROUP BY
+--     a."baseEntityId";
