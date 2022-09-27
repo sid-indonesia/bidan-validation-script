@@ -1,5 +1,7 @@
 SELECT
     the_mother."firstName" || ' ' || the_mother."lastName" AS candidate_name,
+--    anc_registration."obs.nik.values",
+--    anc_registration."obs.bpjs.values",
     CASE
         WHEN anc_registration."obs.nik.values" ILIKE '%5203079868900084%'
         THEN 1
@@ -16,16 +18,17 @@ SELECT
         ELSE 0
     END AS "1-birthdate_is_equal_to_1992-09-12",
     CASE
-        WHEN the_mother.addresses ILIKE '%Jl%Mawar%Desa%Kembang%Dusun%Mekar%Sari%'
+        WHEN the_mother.addresses ILIKE '%Jl%Mawar%Dusun%Kembang%Desa%Mekar%Sari%'
         THEN 1
         ELSE 0
-    END AS "1-address2_is_equal_to_Jl_Mawar_Desa_Kembang_Dusun_Mekar_Sari",
+    END AS "1-address2_is_equal_to_Jl_Mawar_Dusun_Kembang_Desa_Mekar_Sari",
     CASE
         -- Nomor HP ibu
         WHEN anc_registration."obs.phone_number.values" ILIKE '%087765420380%'
         THEN 1
         ELSE 0
     END AS "1-phone_number_value_is_equal_to_087765420380",
+--    anc_registration."obs.reminders.humanReadableValues",
     CASE
         WHEN anc_registration."obs.reminders.humanReadableValues" ILIKE '%yes%'
         THEN 1
@@ -39,10 +42,10 @@ SELECT
     END AS "1-alt_name_value_is_equal_to_Ahmad",
     CASE
         -- Nomor HP suami
-        WHEN anc_registration."obs.alt_phone_number.values" ILIKE '%081917890344%'
+        WHEN the_mother."attributes.alt_phone_number" ILIKE '%081917890344%'
         THEN 1
         ELSE 0
-    END AS "1-alt_phone_number_value_is_equal_to_081917890344",
+    END AS "1-attributes.alt_phone_number_value_is_equal_to_081917890344",
     CASE
         WHEN anc_registration."obs.cohabitants.values" ILIKE '%Orang tua%Pasangan%'
         THEN 1
@@ -314,55 +317,15 @@ SELECT
         ELSE 0
     END AS "7-tobacco_counsel_humanReadableValues_is_done",
     CASE
-        WHEN (
-            latest_counselling_and_treatment."obs.condom_counsel.humanReadableValues" ILIKE '%["done"]%'
-            OR latest_counselling_and_treatment."obs.condom_counsel.humanReadableValues" IS NULL
-        )
-        THEN 1
-        ELSE 0
-    END AS "7-condom_counsel_humanReadableValues_is_done_or_null",
-    CASE
         WHEN latest_counselling_and_treatment."obs.eat_exercise_counsel.humanReadableValues" ILIKE '%["done"]%'
         THEN 1
         ELSE 0
     END AS "7-eat_exercise_counsel_humanReadableValues_is_done",
     CASE
-        WHEN (
-            latest_counselling_and_treatment."obs.danger_signs_counsel.humanReadableValues" ILIKE '%["done"]%'
-            OR latest_counselling_and_treatment."obs.danger_signs_counsel.humanReadableValues" IS NULL
-        )
-        THEN 1
-        ELSE 0
-    END AS "7-danger_signs_counsel_humanReadableValues_is_done_or_null",
-    CASE
-        WHEN (
-            latest_counselling_and_treatment."obs.anc_contact_counsel.humanReadableValues" ILIKE '%["done"]%'
-            OR latest_counselling_and_treatment."obs.anc_contact_counsel.humanReadableValues" IS NULL
-        )
-        THEN 1
-        ELSE 0
-    END AS "7-anc_contact_counsel_humanReadableValues_is_done_or_null",
-    CASE
-        WHEN (
-            latest_counselling_and_treatment."obs.family_planning_counsel.humanReadableValues" ILIKE '%["done"]%'
-            OR latest_counselling_and_treatment."obs.family_planning_counsel.humanReadableValues" IS NULL
-        )
-        THEN 1
-        ELSE 0
-    END AS "7-family_planning_counsel_humanReadableValues_is_done_or_null",
-    CASE
         WHEN latest_counselling_and_treatment."obs.family_planning_type.humanReadableValues" ILIKE '%cu_iud%'
         THEN 1
         ELSE 0
     END AS "7-family_planning_type_humanReadableValues_is_cu_iud",
-    CASE
-        WHEN (
-            latest_counselling_and_treatment."obs.ifa_low_prev_prescribe_daily_dose.humanReadableValues" ILIKE '%done%'
-            OR latest_counselling_and_treatment."obs.ifa_low_prev_prescribe_daily_dose.humanReadableValues" IS NULL
-        )
-        THEN 1
-        ELSE 0
-    END AS "7-ifa_low_prev_prescribe_daily_dose_humanReadableValues_is_done_or_null",
     CASE
         WHEN latest_counselling_and_treatment."obs.calcium_supp.humanReadableValues" ILIKE '%["done"]%'
         THEN 1
@@ -374,7 +337,8 @@ SELECT
         ELSE 0
     END AS "7-vita_supp_humanReadableValues_is_done",
     the_mother."dateCreated",
-    anc_registration."providerId"
+    anc_registration."providerId",
+    the_mother."baseEntityId"
 FROM
     core.client_detailed_view the_mother
 LEFT JOIN
@@ -461,8 +425,25 @@ LEFT JOIN
     core."event_Counselling and Treatment_view" latest_counselling_and_treatment ON
     latest_counselling_and_treatment.id = latest_id_of_counselling_and_treatment.latest_id
 WHERE
-    the_mother."dateCreated" BETWEEN '2022-09-23T00:04:00' AND '2022-09-23T23:00:00'
+    the_mother."dateCreated" BETWEEN '2022-09-26T00:00:00' AND '2022-09-26T23:00:00'
 --    AND anc_registration."providerId" ILIKE 'sid'
+    AND (
+        CASE
+            WHEN (
+                EXISTS (
+                    SELECT
+                        1
+                    FROM
+                        core."event_ANC Close_view" eacv
+                    WHERE
+                        eacv."baseEntityId"= the_mother."baseEntityId"
+                )
+            ) THEN FALSE
+            ELSE TRUE
+        END
+    )
+ORDER BY
+    1
 ;
 
 --LEFT JOIN (
@@ -490,9 +471,9 @@ SELECT
     a."baseEntityId",
     count(*)
 FROM
-    core."event_Quick Check_view" a
-WHERE
-    a."obs.contact_reason.humanReadableValues" = '["first_contact"]'
+    core."event_ANC Close_view" a
+--WHERE
+--    a."obs.contact_reason.humanReadableValues" = '["first_contact"]'
 GROUP BY
     a."baseEntityId"
 HAVING
