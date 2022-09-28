@@ -16,10 +16,13 @@ SELECT
         ELSE 0
     END AS "1-birthdate_is_equal_to_1992-09-12",
     CASE
-        WHEN the_mother.addresses ILIKE '%Jl%Mawar%Dusun%Kembang%Desa%Mekar%Sari%'
+        WHEN (
+            the_mother.addresses ILIKE '%Jl%Mawar%Kembang%Mekar%Sari%'
+            OR the_mother.addresses ILIKE '%Jl%Mawar%Mekar%Sari%Kembang%'
+        )
         THEN 1
         ELSE 0
-    END AS "1-address2_is_equal_to_Jl_Mawar_Dusun_Kembang_Desa_Mekar_Sari",
+    END AS "1-address2_is_like_Jl_Mawar_Dusun_Kembang_Desa_Mekar_Sari",
     CASE
         -- Nomor HP ibu
         WHEN anc_registration."obs.phone_number.values" ILIKE '%087765420380%'
@@ -46,10 +49,20 @@ SELECT
         ELSE 0
     END AS "1-attributes.alt_phone_number_value_is_equal_to_081917890344",
     CASE
-        WHEN anc_registration."obs.cohabitants.values" ILIKE '%Orang tua%Pasangan%'
+        WHEN (
+            (
+                anc_registration."obs.cohabitants.values" ILIKE '%Orang tua%'
+                AND anc_registration."obs.cohabitants.values" ILIKE '%Pasangan%'
+            )
+            OR
+            (
+                anc_registration."obs.cohabitants.values" ILIKE '%Parents%'
+                AND anc_registration."obs.cohabitants.values" ILIKE '%Partner%'
+            )
+        )
         THEN 1
         ELSE 0
-    END AS "1-cohabitants_values_are_equal_to_Orang tua_Pasangan",
+    END AS "1-cohabitants_values_are_equal_to_Orang tua, Pasangan",
 -- empty in newer version of APK
     CASE
         WHEN quick_check_first_contact."obs.contact_reason.humanReadableValues" ILIKE '%first_contact%'
