@@ -846,22 +846,8 @@ LEFT JOIN (
 		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
 	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
 WHERE
---	(ibu."json" ->> 'dateCreated' BETWEEN '2021-02-26T15:00:00+08:00' AND '2021-02-26T18:00:00+08:00'
---	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-27T15:00:00+08:00' AND '2021-02-27T18:00:00+08:00'
---	OR ibu."json" ->> 'dateCreated' BETWEEN '2021-02-28T15:00:00+08:00' AND '2021-02-28T18:00:00+08:00')
---	AND
-	ibu."json" ->> 'dateCreated' BETWEEN '2022-09-24T00:00:00' AND '2022-09-26T23:00:00'
+	ibu."json" ->> 'dateCreated' BETWEEN '2022-10-18T11:00:00' AND '2022-10-18T23:00:00'
 	AND ibu."json" -> 'relationships' ->> 'ibuCaseId' IS NULL
---	AND ibu."json" ->> 'firstName' <> '-'
---	AND ibu."json" ->> 'lastName' <> '-'
---	AND e_identitas_ibu."json" ->> 'providerId' ILIKE 'demo_lotim'
+	AND e_identitas_ibu."json" ->> 'providerId' ILIKE 'demo_lotim'
 ORDER BY
 	1;
--- client_anak having firstName
--- and lastName as '-'
--- total client is 104 in East Lombok by above criteria
--- TODO refactor use user-defined function `check_obs_element_value`
--- or `get_obs_element_value_by_form_submission_field` instead of duplicating them
--- TODO joins are duplicative, need more specific criteria of each event
--- or need cleaner data of each ibu (some ibu submit the same form with same details more than once)
--- or filter them (get only newest or oldest one) before join them
