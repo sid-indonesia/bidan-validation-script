@@ -801,6 +801,442 @@ SELECT
 	e_kunjungan_anc_lab_test,
 	'laboratoriumHiv',
 	'%negatif%') AS "3-hiv_is_negative",
+	core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'lokasiPeriksa',
+    '%Puskesmas%') AS "4-lokasi_periksa_is_puskesmas",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'nomorHp',
+    '081945456262') AS "4-nomor_hp_is_081945456262",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'ancDate',
+    '2019-07-01') AS "4-tanggal_kunjungan_is_2019-07-01",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'kunjunganKe',
+    '3') AS "4-kunjungan_ke_is_3",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'ancKe',
+    '3') AS "4-anc_ke_is_3",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'KeteranganK1k4Who',
+    '%Ya%') AS "4-is_WHO_standard_definition",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'Jamkesmas',
+    '%jika%ya%') AS "4-is_jamkesmas",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'caraMasukTempatPelayanan',
+    '%atas%permintaan%sendiri%') AS "4-cara_masuk_tempat_pelayanan_is_atas_permintaan_sendiri",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'anamnesisIbu',
+    '%tidak%ada%keluhan%') AS "4-anamnesis_is_tidak_ada_keluhan",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'bbKg',
+    '56.2') AS "4-bb_in_kg_is_56.2",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'tandaVitalTDSistolik',
+    '120') AS "4-td_sistolik_is_120",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'tandaVitalTDDiastolik',
+    '90') AS "4-td_diastolik_is_90",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'hasilPemeriksaanLILA',
+    '23.6') AS "4-lila_in_cm_is_23.6",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'statusGiziibu',
+    'normal') AS "4-status_gizi_ibu_is_normal",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'tfu',
+    '28') AS "4-tfu_in_cm_is_28",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'refleksPatelaIbu',
+    'ada') AS "4-refleks_patela_ibu_is_ada",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'djj',
+    '138') AS "4-djj_is_138",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'kepalaJaninTerhadapPAP',
+    'belum_masuk') AS "4-kepala_janin_terhadap_PAP_is_belum_masuk",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'persentasiJanin',
+    'kepala') AS "4-presentasi_janin_is_kepala",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'jumlahJanin',
+    'tunggal') AS "4-jumlah_janin_is_tunggal",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'pelayananInjeksitt',
+    'jika_tidak_dilakukan') AS "4-injeksi_TT_is_tidak",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'statusImunisasitt',
+    'tt_ke_3') AS "4-status_imunisasi_TT_is_tt_ke_3",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'pelayananCatatDiBukuKia',
+    'jika_dilakukan') AS "4-is_pelayanan_catat_di_buku_kia_done",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'pelayananfe',
+    '%Ya%') AS "4-is_pelayanan_fe",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'pelayananFe',
+    '30') AS "4-jumlah_fe_is_30",
+    core.check_obs_element_value('values',
+    e_kunjungan_anc_ke_3,
+    'fe1Fe3',
+    'fe3') AS "4-jenis_fe_is_fe3",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'komplikasidalamKehamilan',
+    'tidak_ada_komplikasi') AS "4-komplikasi_dalam_kehamilan_is_tidak_ada_komplikasi",
+    CASE
+        WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_kunjungan_anc_ke_3,
+        'resikoTerdeksiPertamaKali')) IS NULL THEN 1
+        ELSE 0
+    END AS "4-resiko_terdeteksi_pertama_kali_is_null",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_anc_ke_3,
+    'treatment',
+    '%Tidak%') AS "4-penanganan_diberikan_is_tidak",
+    CASE
+        WHEN (core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_kunjungan_anc_ke_3,
+        'lokasiPeriksaOther')) IS NULL THEN 1
+        ELSE 0
+    END AS "4-merujuk_fasilitas_lain_is_tidak",
+    core.check_obs_element_value('values',
+    e_rencana_persalinan,
+    'tanggalKunjunganRencanaPersalinan',
+    '2019-08-20') AS "5-tanggal_kunjungan_is_2019-08-20",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'lokasiPeriksa',
+    '%Puskesmas%') AS "5-lokasi_periksa_is_puskesmas",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'rencanaPenolongPersalinan',
+    'bidan') AS "5-rencana_penolong_persalinan_is_bidan",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'tempatRencanaPersalinan',
+    'pusat_kesehatan_masyarakat') AS "5-tempat_rencana_persalinan_is_puskesmas",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'rencanaPendampingPersalinan',
+    'suami') AS "5-rencana_pendamping_persalinan_is_suami",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'transportasi',
+    'sepeda_motor') AS "5-transportasi_is_sepeda_motor",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'pendonor',
+    'keluarga') AS "5-pendonor_is_keluarga",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'kondisiRumah',
+    'permanen') AS "5-status_rumah_is_permanen",
+    core.check_obs_element_value('humanReadableValues',
+    e_rencana_persalinan,
+    'kondisiRumah',
+    'permanen') AS "5-status_rumah_is_permanen",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'keadaanIbu',
+    'hidup') AS "6-keadaan_ibu_is_hidup",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field_as_text('humanReadableValues',
+        e_dokumentasi_persalinan,
+        'persalinan') ILIKE '%kalasatu%kaladua%kalatiga%kalaempat%' THEN 1
+        ELSE 0
+    END AS "6-persalinan_is_kalasatu_kaladua_kalatiga_kalaempat",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'tanggalKalaIAktif',
+    '2019-09-15') AS "6-tanggal_kala_satu_aktif_is_2019-09-15",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'jamKalaIAktif',
+    '21:00') AS "6-jam_kala_satu_aktif_is_21:00",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'tanggalKalaII',
+    '2019-09-16') AS "6-tanggal_kala_dua_is_2019-09-16",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'jamKalaII',
+    '01:00') AS "6-jam_kala_dua_is_01:00",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'persentasi',
+    'belakang_kepala') AS "6-presentasi_is_belakang_kepala",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'tanggalPlasentaLahir',
+    '2019-09-16') AS "6-tanggal_plasenta_lahir_is_2019-09-16",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'jamPlasentaLahir',
+    '01:15') AS "6-jam_plasenta_lahir_is_01:15",
+    core.check_obs_element_value('values',
+    e_dokumentasi_persalinan,
+    'perdarahanKalaIV2JamPostpartum',
+    '250') AS "6-perdarahan_kala_empat_2_jam_postpartum_in_cc_is_250",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'tempatBersalin',
+    'pusat_kesehatan_masyarakat') AS "6-tempat_bersalin_is_puskesmas",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'penolong',
+    'bidan') AS "6-penolong_is_bidan",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'caraPersalinanIbu',
+    'normal') AS "6-cara_persalinan_ibu_is_normal",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field_as_text('humanReadableValues',
+        e_dokumentasi_persalinan,
+        'manajemenAktifKalaIII') ILIKE '%injeksi_oksittosin%peregangan_tali_pusat%masase_fundus_uteri%' THEN 1
+        ELSE 0
+    END AS "6-manajemenAktifKalaIII_are_injeksi_oksittosin_peregangan_tali_",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_dokumentasi_persalinan,
+        'integrasiProgram') IS NULL THEN 1
+        ELSE 0
+    END AS "6-integrasi_program_is_null",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'komplikasi',
+    'tidak_ada_komplikasi') AS "6-komplikasi_is_tidak_ada_komplikasi",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'treatment',
+    '%Tidak%') AS "6-penanganan_diberikan_is_tidak",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'dirujukKe',
+    'tidak_diujuk') AS "6-dirujuk_ke_is_tidak_dirujuk",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_dokumentasi_persalinan,
+        'alamatBersalin') IS NULL THEN 1
+        ELSE 0
+    END AS "6-alamat_bersalin_is_null",
+    core.check_obs_element_value('humanReadableValues',
+    e_dokumentasi_persalinan,
+    'keadaanBayi',
+    'hidup') AS "6-keadaan_bayi_is_hidup",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'lokasiPeriksa',
+    'Rumah_Ibu') AS "7-lokasi_periksa_is_rumah_ibu",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'PNCDate',
+    '2019-09-19') AS "7-tanggal_kunjungan_is_2019-09-19",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'hariKeKF',
+    '1') AS "7-hari_ke/KF_is_1",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'keadaanUmum',
+    'baik') AS "7-keadaan_umum_ibu_is_baik",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'tandaVitalTDSistolik',
+    '110') AS "7-sistolik_is_110",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'tandaVitalTDDiastolik',
+    '90') AS "7-diastolik_is_90",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'tandaVitalSuhu',
+    '36.9') AS "7-suhu_in_celsius_is_36.9",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'tandaVitalNadi',
+    '78') AS "7-nadi_in_bpm_is_78",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'tandaVitalPernafasan',
+    '20') AS "7-pernafasan_per_minute_is_20",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'lochia',
+    'lochia_rubra') AS "7-lochia_is_rubra",
+    core.check_obs_element_value('values',
+    e_kunjungan_pnc,
+    'bleeding',
+    '25') AS "7-perdarahan_in_cc_is_25",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'pelayananCatatDiBukuKia',
+    'jika_dilakukan') AS "7-is_pelayanan_catat_di_buku_kia_done",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'vitaminA2jamPP',
+    'Ya') AS "7-vitamin_A_2_jam_PP_is_ya",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'vitaminA24jamPP',
+    'Ya') AS "7-vitamin_A_24_jam_PP_is_ya",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_kunjungan_pnc,
+        'integrasiProgram') IS NULL THEN 1
+        ELSE 0
+    END AS "7-integrasi_program_is_null",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_kunjungan_pnc,
+        'komplikasi') IS NULL THEN 1
+        ELSE 0
+    END AS "7-komplikasi_is_null",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'treatment',
+    '%Tidak%') AS "7-penanganan_diberikan_is_tidak",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_pnc,
+    'rujukan',
+    'Tidak') AS "7-rujukan_is_tidak",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_neonatal,
+    'lokasiPeriksa',
+    '%Puskesmas%') AS "8-lokasi_periksa_is_puskesmas",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_neonatal,
+    'kunjunganNeonatal',
+    '5_jam_pertama') AS "8-kunjungan_neonatal_is_5_jam_pertama",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'tanggalKunjunganBayiPerbulan',
+    '2019-09-16') AS "8-tanggal_kunjungan_is_2019-09-16",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field_as_text('humanReadableValues',
+        e_kunjungan_neonatal,
+        'jenisPelayanan') ILIKE '%"first_breast_feeding"%"vit-k_injection"%"salep_mata"%' THEN 1
+        ELSE 0
+    END AS "8-jenis_pelayanan_are_IMD_vit-k_salep_mata",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'pemeriksaanNeonatal',
+    'pemeriksaan_infeksi pemeriksaan_diare pemeriksaan_ikterus pemeriksaan_asi pemeriksaan_vitk pemeriksaan_hb0 pemeriksaan_keluhan_lain pemeriksaan_keluhan_ibu') AS "8-ceklis_pemeriksaan_neonatal_is_ALL",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'beratBayi',
+    '2800') AS "8-berat_bayi_in_gram_is_2800",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'panjangBayi',
+    '47') AS "8-panjang_bayi_in_cm_is_47",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'suhuBayi',
+    '36.5') AS "8-suhu_bayi_in_celsius_is_36.5",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'frekuensiNapas',
+    '45') AS "8-frekuensi_napas_per_menit_is_45",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'frekuensiDenyutJantung',
+    '100') AS "8-frekuensi_denyut_jantung_per_menit_is_100",
+    core.check_obs_element_value('humanReadableValues',
+    e_kunjungan_neonatal,
+    'kondisiBayi',
+    'sehat') AS "8-kondisi_bayi_is_sehat",
+    core.check_obs_element_value('values',
+    e_kunjungan_neonatal,
+    'hb0',
+    '2019-09-16') AS "8-imunisasi_hb0_is_2019-09-16",
+    core.check_obs_element_value('values',
+    e_kohort_kunjungan_bayi_perbulan,
+    'tanggalKunjunganBayiPerbulan',
+    '2019-09-22') AS "9-tanggal_kunjungan_is_2019-09-22",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'lokasiPeriksa',
+    '%Posyandu%') AS "9-lokasi_periksa_is_posyandu",
+    core.check_obs_element_value('values',
+    e_kohort_kunjungan_bayi_perbulan,
+    'panjangBayi',
+    '51') AS "9-panjang_bayi_in_cm_is_51",
+    core.check_obs_element_value('values',
+    e_kohort_kunjungan_bayi_perbulan,
+    'beratBayi',
+    '3500') AS "9-berat_bayi_in_gram_is_3500",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'indikatorBeratBadanBayi',
+    'B') AS "9-indikator_berat_badan_bayi_is_B",
+    core.check_obs_element_value('values',
+    e_kohort_kunjungan_bayi_perbulan,
+    'AsiAksklusif',
+    '1') AS "9-ASI_eksklusif_is_1",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'hasilDilakukannyaKPSP',
+    'NA') AS "9-KPSP_is_tidak_dilakukan",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'pelayananVita',
+    'jika_tidak_dilakukan') AS "9-pelayanan_vit_a_is_tidak_dilakukan",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'statusKesehatanBayi',
+    'Sehat') AS "9-status_kesehatan_bayi_is_sehat",
+    CASE
+        WHEN core.get_obs_element_value_by_form_submission_field('humanReadableValues',
+        e_kohort_kunjungan_bayi_perbulan,
+        'penyakit') IS NULL THEN 1
+        ELSE 0
+    END AS "9-penyakit_is_null",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'mtbs',
+    'Tidak') AS "9-mtbs_is_tidak",
+    core.check_obs_element_value('humanReadableValues',
+    e_kohort_kunjungan_bayi_perbulan,
+    'rujukanBayi',
+    'Tidak') AS "9-rujukan_bayi_is_tidak",
+    core.check_obs_element_value('values',
+    e_imunisasi_bayi,
+    'hb0',
+    '2019-10-20') AS "10-imunisasi_hb0_is_2019-10-20",
+    core.check_obs_element_value('values',
+    e_imunisasi_bayi,
+    'bcg',
+    '2019-10-20') AS "10-imunisasi_bcg_is_2019-10-20",
+    core.check_obs_element_value('values',
+    e_imunisasi_bayi,
+    'polio1',
+    '2019-10-20') AS "10-imunisasi_polio1_is_2019-10-20",
 	ibu."json" ->> 'dateCreated' AS date_created,
 	e_identitas_ibu."json" ->> 'providerId' AS provider_id
 FROM
@@ -845,6 +1281,89 @@ LEFT JOIN (
 	WHERE
 		e."json" ->> 'eventType' = 'Kunjungan ANC Lab Test') e_kunjungan_anc_lab_test ON
 	ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_lab_test."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        DISTINCT sub_json."json"
+    FROM
+        (
+        SELECT
+            e."json",
+            jsonb_array_elements(e."json" #> '{obs}') AS obs_data
+        FROM
+            core."event" e
+        WHERE
+            e."json" ->> 'eventType' = 'Kunjungan ANC') sub_json
+    WHERE
+        sub_json.obs_data ->> 'formSubmissionField' = 'kunjunganKe'
+        AND sub_json.obs_data -> 'values' ->> 0 = '3') e_kunjungan_anc_ke_3 ON
+    ibu."json" ->> 'baseEntityId' = e_kunjungan_anc_ke_3."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'rencana persalinan') e_rencana_persalinan ON
+    ibu."json" ->> 'baseEntityId' = e_rencana_persalinan."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'Dokumentasi Persalinan') e_dokumentasi_persalinan ON
+    ibu."json" ->> 'baseEntityId' = e_dokumentasi_persalinan."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'Kunjungan PNC') e_kunjungan_pnc ON
+    ibu."json" ->> 'baseEntityId' = e_kunjungan_pnc."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        anak."json" -> 'relationships' -> 'ibuCaseId' ->> 0 AS ibu_case_id,
+        MAX(anak."json" ->> 'dateCreated') AS date_created
+    FROM
+        core.client anak
+    GROUP BY
+        1) latest_anak ON
+    ibu."json" ->> 'baseEntityId' = latest_anak.ibu_case_id
+LEFT JOIN (
+    SELECT
+        anak."json"
+    FROM
+        core.client anak
+    WHERE
+        anak."json" -> 'relationships' ->> 'ibuCaseId' IS NOT NULL) anak ON
+    ((ibu."json" -> 'relationships' -> 'childId' ->> 0 = anak."json" ->> 'baseEntityId'
+        OR ibu."json" -> 'relationships' -> 'childId' ->> 1 = anak."json" ->> 'baseEntityId')
+    AND latest_anak.date_created = anak."json" ->> 'dateCreated')
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'Kunjungan neonatal') e_kunjungan_neonatal ON
+    anak."json" ->> 'baseEntityId' = e_kunjungan_neonatal."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'Kohort Kunjungan Bayi Perbulan') e_kohort_kunjungan_bayi_perbulan ON
+    anak."json" ->> 'baseEntityId' = e_kohort_kunjungan_bayi_perbulan."json" ->> 'baseEntityId'
+LEFT JOIN (
+    SELECT
+        e."json"
+    FROM
+        core."event" e
+    WHERE
+        e."json" ->> 'eventType' = 'Imunisasi Bayi') e_imunisasi_bayi ON
+    anak."json" ->> 'baseEntityId' = e_imunisasi_bayi."json" ->> 'baseEntityId'
 WHERE
 	ibu."json" ->> 'dateCreated' BETWEEN '2022-10-18T11:00:00' AND '2022-10-18T23:00:00'
 	AND ibu."json" -> 'relationships' ->> 'ibuCaseId' IS NULL
